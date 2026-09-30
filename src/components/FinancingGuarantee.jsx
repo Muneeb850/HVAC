@@ -10,8 +10,8 @@ export default function FinancingGuarantee({ playAudioClick }) {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         
         {/* Financing Banner Card */}
-        <div className="rounded-3xl bg-[#1C1917] text-white p-8 sm:p-12 shadow-2xl relative overflow-hidden mb-20">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#8C6C46]/10 blur-3xl pointer-events-none rounded-full" />
+        <div className="rounded-3xl bg-[#1C1917] text-white p-6 sm:p-12 shadow-2xl relative overflow-hidden mb-20">
+          <div className="absolute -top-10 -right-10 w-64 h-64 sm:w-96 sm:h-96 bg-[#8C6C46]/10 blur-3xl pointer-events-none rounded-full" />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-8 space-y-4">

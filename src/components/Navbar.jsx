@@ -84,10 +84,29 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
             </button>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Quick Action: Call Button + Menu Toggle */}
+          <div className="flex sm:hidden items-center gap-2 shrink-0">
+            <a
+              href={`tel:${COMPANY_INFO.phone}`}
+              className="p-2 rounded-xl text-[#8C6C46] bg-[#FAF5EE] border border-[#E8DFCE] active:scale-95 transition"
+              aria-label="Call (720) 499-4013"
+            >
+              <Phone className="w-4 h-4" />
+            </a>
+
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl text-[#1C1917] hover:bg-[#EFEAE0] transition"
+              aria-label="Toggle Navigation"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+
+          {/* Tablet Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-[#1C1917] hover:bg-[#EFEAE0] transition"
+            className="hidden sm:block lg:hidden p-2 rounded-xl text-[#1C1917] hover:bg-[#EFEAE0] transition"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

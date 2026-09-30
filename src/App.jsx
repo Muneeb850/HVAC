@@ -16,7 +16,7 @@ export default function App() {
   const [modalInitialData, setModalInitialData] = useState(null);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [activeSymptom, setActiveSymptom] = useState(null);
-  const [currentTheme, setCurrentTheme] = useState('gold'); // 'gold' | 'onenation' | 'emerald' | 'nordic' | 'steel'
+  const [currentTheme, setCurrentTheme] = useState('nordic'); // 'nordic' default warm alabaster & terracotta stone
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', currentTheme);

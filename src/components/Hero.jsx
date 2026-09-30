@@ -14,13 +14,31 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
           className="w-full h-full object-cover object-center brightness-[1.07] contrast-[1.03]"
         />
         
-        {/* Architectural Warm Alabaster Scrim preserving exact theme palette and legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F7F4EE] via-[#F7F4EE]/85 to-[#F7F4EE]/35 lg:to-[#F7F4EE]/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F7F4EE] via-transparent to-[#F7F4EE]/45" />
+        {/* Mobile Scrim: Exact Warm Alabaster so mobile colors match laptop 100% */}
+        <div 
+          className="absolute inset-0 lg:hidden pointer-events-none"
+          style={{ 
+            background: 'linear-gradient(to bottom, rgba(247, 244, 238, 0.96) 0%, rgba(247, 244, 238, 0.92) 55%, rgba(247, 244, 238, 0.85) 100%)' 
+          }}
+        />
+
+        {/* Desktop Architectural Warm Alabaster Scrim */}
+        <div 
+          className="hidden lg:block absolute inset-0 pointer-events-none"
+          style={{ 
+            background: 'linear-gradient(to right, rgba(247, 244, 238, 1) 0%, rgba(247, 244, 238, 0.90) 52%, rgba(247, 244, 238, 0.40) 80%, rgba(247, 244, 238, 0.10) 100%)' 
+          }}
+        />
+        <div 
+          className="hidden lg:block absolute inset-0 pointer-events-none"
+          style={{ 
+            background: 'linear-gradient(to top, rgba(247, 244, 238, 1) 0%, transparent 40%, rgba(247, 244, 238, 0.35) 100%)' 
+          }}
+        />
       </div>
 
       {/* 2. Content & Words in FRONT of Background Picture */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
         
         {/* Top Hero Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2">
@@ -28,40 +46,40 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
           {/* Left Column: Typography & Action */}
           <div className="lg:col-span-7 space-y-6">
             {/* Small uppercase tag */}
-            <div className="text-[11px] font-sans tracking-[0.25em] text-[#8C8275] uppercase font-semibold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#8C6C46]" />
-              <span>CRAFTING CLIMATE INFRASTRUCTURE. COLORADO.</span>
+            <div className="text-[10px] sm:text-[11px] font-sans tracking-[0.2em] sm:tracking-[0.25em] text-[#8C8275] uppercase font-semibold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#8C6C46] shrink-0" />
+              <span className="truncate">CRAFTING CLIMATE INFRASTRUCTURE. COLORADO.</span>
             </div>
 
             {/* Massive Editorial Serif Headline matching theme typography */}
-            <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] font-display font-medium uppercase tracking-tight text-[#1C1917] leading-[0.92]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-medium uppercase tracking-tight text-[#1C1917] leading-[1.02] sm:leading-[0.92]">
               ELEVATING <br />
               CLIMATE COMFORT
             </h1>
 
             {/* Clean, light subtext */}
-            <p className="text-base sm:text-lg text-[#5A534A] max-w-lg font-sans leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-[#5A534A] max-w-lg font-sans leading-relaxed">
               We engineer, install, and optimize high-efficiency heating, ventilation, and air conditioning systems that keep Colorado homes and commercial facilities in perpetual equilibrium.
             </p>
 
             {/* Black Pill Button with Circular Arrow matching reference */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <button
                 onClick={() => {
                   if (playAudioClick) playAudioClick();
                   onOpenBooking({ service: 'heat-pumps' });
                 }}
-                className="px-7 py-3.5 rounded-full bg-[#1C1917] hover:bg-[#332E29] text-white font-sans text-xs font-semibold uppercase tracking-wider flex items-center gap-3.5 shadow-md hover:scale-[1.02] active:scale-95 transition-all group"
+                className="w-full sm:w-auto justify-center px-7 py-3.5 rounded-full bg-[#1C1917] hover:bg-[#332E29] text-white font-sans text-xs font-semibold uppercase tracking-wider flex items-center gap-3.5 shadow-md hover:scale-[1.02] active:scale-95 transition-all group"
               >
                 <span>EXPLORE HVAC SYSTEMS</span>
-                <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform shrink-0">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </span>
               </button>
 
               <a
                 href={`tel:${COMPANY_INFO.phone}`}
-                className="px-6 py-3.5 rounded-full border border-[#D5CDBC] text-[#1C1917] hover:border-[#1C1917] bg-white/80 backdrop-blur-sm font-mono text-xs font-semibold tracking-wide transition-all"
+                className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full border border-[#D5CDBC] text-[#1C1917] hover:border-[#1C1917] bg-white/80 backdrop-blur-sm font-mono text-xs font-semibold tracking-wide transition-all"
               >
                 CALL (720) 499-4013
               </a>
@@ -192,20 +210,20 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
             <div className="hidden md:block w-px h-16 bg-[#D8CEBA]" />
 
             {/* 3 Metrics */}
-            <div className="md:col-span-3 grid grid-cols-3 gap-4 text-center">
+            <div className="md:col-span-3 grid grid-cols-3 gap-2 sm:gap-4 text-center pt-4 md:pt-0 border-t md:border-t-0 border-[#E8DFCE]">
               <div>
-                <div className="text-2xl lg:text-3xl font-display font-medium text-[#1C1917]">12+</div>
-                <div className="text-[10px] font-sans text-[#787168] uppercase tracking-wider mt-0.5">Years Serving CO</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-display font-medium text-[#1C1917]">12+</div>
+                <div className="text-[9px] sm:text-[10px] font-sans text-[#787168] uppercase tracking-wider mt-0.5">Years in CO</div>
               </div>
 
               <div>
-                <div className="text-2xl lg:text-3xl font-display font-medium text-[#1C1917]">3,800+</div>
-                <div className="text-[10px] font-sans text-[#787168] uppercase tracking-wider mt-0.5">Systems Installed</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-display font-medium text-[#1C1917]">3,800+</div>
+                <div className="text-[9px] sm:text-[10px] font-sans text-[#787168] uppercase tracking-wider mt-0.5">Installed</div>
               </div>
 
               <div>
-                <div className="text-2xl lg:text-3xl font-display font-medium text-[#1C1917]">99.4%</div>
-                <div className="text-[10px] font-sans text-[#787168] uppercase tracking-wider mt-0.5">Reliability Rate</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-display font-medium text-[#1C1917]">99.4%</div>
+                <div className="text-[9px] sm:text-[10px] font-sans text-[#787168] uppercase tracking-wider mt-0.5">Reliability</div>
               </div>
             </div>
 

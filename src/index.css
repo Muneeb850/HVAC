@@ -2,8 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme Color System Variables */
-:root, [data-theme="onenation"] {
+/* Theme Color System Variables & Mobile Color Lock */
+:root {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root, [data-theme="nordic"] {
+  /* Dark Sections: Warm Charcoal */
+  --bg-dark-primary: #121417;
+  --bg-dark-secondary: #1A1D21;
+  --bg-dark-card: #22262B;
+  --border-dark: #2E3339;
+  --text-dark-primary: #F5F4F0;
+  --text-dark-secondary: #A0A5AA;
+
+  /* Light Sections: Warm Alabaster Stone */
+  --bg-light-primary: #F7F4EE;
+  --bg-light-secondary: #FAF5EE;
+  --bg-light-card: #FFFFFF;
+  --border-light: #EAE3D6;
+  --text-light-primary: #1C1917;
+  --text-light-secondary: #5A534A;
+
+  /* Accents: Terracotta Bronze & Amber */
+  --accent-primary: #8C6C46;
+  --accent-primary-hover: #755938;
+  --accent-secondary: #B8936D;
+  --accent-glow: rgba(140, 108, 70, 0.15);
+  --badge-bg: #FAF5EE;
+  --badge-text: #8C6C46;
+}
+
+[data-theme="onenation"] {
   /* Dark Sections: Midnight Navy */
   --bg-dark-primary: #0A1322;
   --bg-dark-secondary: #0F1B2E;
