@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
@@ -9,7 +9,6 @@ import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import TriagePage from './pages/TriagePage';
-import SystemSizerPage from './pages/SystemSizerPage';
 import CoveragePage from './pages/CoveragePage';
 import ReviewsPage from './pages/ReviewsPage';
 import ContactPage from './pages/ContactPage';
@@ -106,23 +105,11 @@ export default function App() {
             />
             <Route 
               path="/system-sizer" 
-              element={
-                <SystemSizerPage 
-                  onOpenBooking={handleOpenBooking} 
-                  playAudioClick={playAudioClick} 
-                  currentTheme={currentTheme} 
-                />
-              } 
+              element={<Navigate to="/services" replace />} 
             />
             <Route 
               path="/calculator" 
-              element={
-                <SystemSizerPage 
-                  onOpenBooking={handleOpenBooking} 
-                  playAudioClick={playAudioClick} 
-                  currentTheme={currentTheme} 
-                />
-              } 
+              element={<Navigate to="/services" replace />} 
             />
             <Route 
               path="/coverage" 

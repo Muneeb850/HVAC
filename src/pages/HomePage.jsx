@@ -2,7 +2,6 @@ import React from 'react';
 import Hero from '../components/Hero';
 import ServicesMatrix from '../components/ServicesMatrix';
 import DiagnosticWizard from '../components/DiagnosticWizard';
-import CostCalculator from '../components/CostCalculator';
 import ServiceAreaRadar from '../components/ServiceAreaRadar';
 import ReviewsSection from '../components/ReviewsSection';
 import FinancingGuarantee from '../components/FinancingGuarantee';
@@ -30,27 +29,20 @@ export default function HomePage({ onOpenBooking, playAudioClick, currentTheme }
         currentTheme={currentTheme}
       />
 
-      {/* 4. Tailored Climate System Sizer & Configurator */}
-      <CostCalculator
-        onBookEstimate={(data) => onOpenBooking(data)}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
-
-      {/* 5. Colorado Coverage Corridors & Radar */}
+      {/* 4. Colorado Coverage Corridors & Radar */}
       <ServiceAreaRadar
         onSelectCity={(city) => onOpenBooking({ city })}
         playAudioClick={playAudioClick}
         currentTheme={currentTheme}
       />
 
-      {/* 6. Verified Client Reviews */}
+      {/* 5. Verified Client Reviews */}
       <ReviewsSection
         playAudioClick={playAudioClick}
         currentTheme={currentTheme}
       />
 
-      {/* 7. Financing Guarantee & Warranties */}
+      {/* 6. Financing Guarantee & Warranties */}
       <FinancingGuarantee
         playAudioClick={playAudioClick}
         currentTheme={currentTheme}

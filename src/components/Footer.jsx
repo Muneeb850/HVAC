@@ -55,7 +55,6 @@ export default function Footer({ onOpenBooking, playAudioClick }) {
               <li><Link to="/" onClick={playAudioClick} className="hover:text-white transition">Home Overview</Link></li>
               <li><Link to="/services" onClick={playAudioClick} className="hover:text-white transition">HVAC Services Fleet</Link></li>
               <li><Link to="/triage" onClick={playAudioClick} className="hover:text-white transition">Emergency Diagnostic Triage</Link></li>
-              <li><Link to="/system-sizer" onClick={playAudioClick} className="hover:text-white transition">System Sizer &amp; Configurator</Link></li>
               <li><Link to="/coverage" onClick={playAudioClick} className="hover:text-white transition">Front Range Coverage</Link></li>
               <li><Link to="/reviews" onClick={playAudioClick} className="hover:text-white transition">Verified Colorado Reviews</Link></li>
               <li><Link to="/contact" onClick={playAudioClick} className="hover:text-white transition">Contact &amp; Dispatch HQ</Link></li>
@@ -73,7 +72,7 @@ export default function Footer({ onOpenBooking, playAudioClick }) {
               <li><Link to="/coverage" onClick={playAudioClick} className="hover:text-white transition">Aurora HQ Dispatch (18m)</Link></li>
               <li><Link to="/coverage" onClick={playAudioClick} className="hover:text-white transition">Denver Metro Vans (22m)</Link></li>
               <li><Link to="/coverage" onClick={playAudioClick} className="hover:text-white transition">Boulder &amp; Foothills (34m)</Link></li>
-              <li><Link to="/system-sizer" onClick={playAudioClick} className="hover:text-white transition">Xcel Energy Sizer</Link></li>
+              <li><Link to="/contact" onClick={playAudioClick} className="hover:text-white transition">Schedule Estimate</Link></li>
             </ul>
           </div>
 

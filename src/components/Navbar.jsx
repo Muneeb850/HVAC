@@ -19,7 +19,6 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
     { label: "Home", to: "/" },
     { label: "Services", to: "/services" },
     { label: "Emergency Triage", to: "/triage" },
-    { label: "System Sizer", to: "/system-sizer" },
     { label: "Coverage", to: "/coverage" },
     { label: "Reviews", to: "/reviews" },
     { label: "Contact", to: "/contact" },
