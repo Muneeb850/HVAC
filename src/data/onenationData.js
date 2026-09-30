@@ -33,10 +33,14 @@ export const SERVICES = [
   {
     id: "heat-pumps",
     category: "heat-pumps",
+    categoryTag: "HEAT PUMP TECH",
+    shortTitle: "Cold-Climate Heat Pumps",
     title: "Cold-Climate Inverter Heat Pumps (Rated to -15°F)",
     badge: "Colorado Rebate Eligible",
     estimateScope: "Free In-Home Sizing & Estimate",
     eta: "Next-Day",
+    image: "/images/hvac_cooling_ac.jpg",
+    tags: ["Sub-Zero to -15°F", "Xcel Rebate Eligible"],
     description: "Ultra-quiet variable-speed inverter heat pump technology designed to provide clean heating through sub-zero Colorado cold snaps and high-efficiency summer cooling.",
     features: [
       "Dual-fuel hybrid integration with existing gas furnaces",
@@ -49,10 +53,14 @@ export const SERVICES = [
   {
     id: "gas-furnaces",
     category: "heating",
+    categoryTag: "FURNACE ENGINEERING",
+    shortTitle: "High-Efficiency Furnaces",
     title: "High-Efficiency 96%+ AFUE Low-NOx Gas Furnaces",
     badge: "Extreme Cold Certified",
     estimateScope: "Custom Engineered Quote",
     eta: "Same-Day / Next-Day",
+    image: "/images/hvac_heating_furnace.jpg",
+    tags: ["96%+ AFUE Rating", "10-Yr Master Warranty"],
     description: "Two-stage and modulating gas furnaces calibrated for Colorado's dry, high-altitude alpine air, guaranteeing reliable whole-home warmth through deep freezes.",
     features: [
       "Variable-speed ECM blower motors for whisper-silent airflow",
@@ -60,15 +68,19 @@ export const SERVICES = [
       "Integrated carbon monoxide safety cutoff sensors",
       "10-Year parts and labor master technician warranty"
     ],
-    popular: true
+    popular: false
   },
   {
     id: "central-ac",
     category: "cooling",
+    categoryTag: "CENTRAL COOLING",
+    shortTitle: "Precision Central AC",
     title: "Precision Central Air Conditioning Installation & Repair",
     badge: "Peak Summer Comfort",
     estimateScope: "Transparent Written Estimate",
     eta: "Same-Day Dispatch",
+    image: "/images/hvac_condenser_card.jpg",
+    tags: ["Multi-Stage SEER2", "Same-Day Dispatch"],
     description: "Engineered cooling systems built to handle blazing 95°F+ Front Range heatwaves with optimized multi-stage compressors and eco-friendly R-454B/R-410A refrigerant.",
     features: [
       "High-efficiency condensing units with aluminum microchannel coils",
@@ -76,15 +88,19 @@ export const SERVICES = [
       "Digital static pressure and aerodynamic airflow balancing",
       "Complete legacy AC haul-away and EPA refrigerant recovery"
     ],
-    popular: true
+    popular: false
   },
   {
     id: "ductless-mini-splits",
     category: "heat-pumps",
+    categoryTag: "MULTI-ZONE CLIMATE",
+    shortTitle: "Ductless Mini-Splits",
     title: "Multi-Zone Ductless Mini-Split Systems",
     badge: "Zero Ductwork Required",
     estimateScope: "Room-by-Room Sizing Quote",
     eta: "1-2 Days",
+    image: "/images/hvac_cooling_ac.jpg",
+    tags: ["Room-by-Room Control", "Zero Ductwork Required"],
     description: "Targeted independent room-by-room heating and cooling for historic Denver homes, modern additions, sunrooms, and detached garages.",
     features: [
       "Independent micro-climate control for each individual living space",
@@ -97,10 +113,14 @@ export const SERVICES = [
   {
     id: "rooftop-package-units",
     category: "commercial",
+    categoryTag: "COMMERCIAL & ROOFTOP",
+    shortTitle: "Rooftop Package Units (RTU)",
     title: "Commercial & Residential Rooftop Package Units (RTU)",
     badge: "High-Capacity Rooftop Fleet",
     estimateScope: "Engineering Consultation & Quote",
     eta: "Scheduled / Priority",
+    image: "/images/hvac_rooftop_hero.jpg",
+    tags: ["Heavy-Duty RTU Fleet", "Crane Rigging Included"],
     description: "Self-contained heavy-duty rooftop heating, cooling, and air ventilation units engineered for residential complexes and commercial properties.",
     features: [
       "All-in-one heating and cooling packaged within weatherized cabinetry",
@@ -113,10 +133,14 @@ export const SERVICES = [
   {
     id: "iaq-ventilation",
     category: "air-quality",
+    categoryTag: "AIR PURIFICATION",
+    shortTitle: "Whole-Home HEPA & Clean Air",
     title: "Whole-Home HEPA Filtration & Fresh Air ERV/HRV",
     badge: "Hospital-Grade Clean Air",
     estimateScope: "Air Quality Audit & Proposal",
     eta: "Same-Day",
+    image: "/images/hvac_air_quality.jpg",
+    tags: ["MERV-16 Hospital-Grade", "Fresh-Air ERV Exchanger"],
     description: "Remove Colorado wildfire smoke, alpine pollen, mold spores, and viruses while balancing indoor humidity during arid winter months.",
     features: [
       "MERV-16 hospital-grade particulate air scrubbers",

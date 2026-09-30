@@ -306,3 +306,4 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
     </section>
   );
 }
+
