@@ -84,7 +84,7 @@ export default function ReviewsSection({ playAudioClick }) {
                   </span>
                 </div>
 
-                <p className="text-[#3D3730] text-xs sm:text-sm leading-relaxed mb-6 font-sans italic line-clamp-5">
+                <p className="text-[#3D3730] text-xs sm:text-sm leading-relaxed mb-6 font-sans italic line-clamp-5 min-h-[7rem]">
                   "{rev.quote}"
                 </p>
               </div>
