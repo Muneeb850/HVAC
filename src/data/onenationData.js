@@ -125,38 +125,6 @@ export const SERVICES = [
       "Steam whole-home humidification preserving hardwood floors and sinuses"
     ],
     popular: false
-  },
-  {
-    id: "emergency-hvac",
-    category: "heating",
-    title: "24/7 Emergency No-Heat & Frozen AC Coil Rescue",
-    badge: "15-30 Min Priority Dispatch",
-    estimateScope: "Upfront Flat-Rate Diagnostics",
-    eta: "15-30 Mins",
-    description: "Immediate emergency arrival for sudden furnace lockouts, cracked heat exchangers, frozen AC evaporator coils, or blower motor burnouts.",
-    features: [
-      "Fully stocked dispatch vans with universal ignitors, boards & capacitors",
-      "Digital electronic combustion analysis and CO safety certification",
-      "Temporary emergency heating provisions while parts are secured",
-      "Transparent flat-rate pricing before diagnostic work begins"
-    ],
-    popular: true
-  },
-  {
-    id: "smart-thermostats-ducts",
-    category: "cooling",
-    title: "Smart Thermostats (Ecobee/Nest) & Aerodynamic Duct Sealing",
-    badge: "Efficiency Optimization",
-    estimateScope: "Airflow Balancing Estimate",
-    eta: "Same-Day",
-    description: "Eliminate hot and cold spots across multi-story homes with calibrated damper adjustments, Aeroseal duct sealing, and smart multi-sensor thermostats.",
-    features: [
-      "Smart learning thermostat setup with remote room sensors",
-      "Thermal camera inspection revealing hidden attic & crawlspace duct leaks",
-      "Static pressure airflow rebalancing for balanced room temperatures",
-      "Utility demand-response rebate activation"
-    ],
-    popular: false
   }
 ];
 
