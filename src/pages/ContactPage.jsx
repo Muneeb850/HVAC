@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import BackButton from '../components/BackButton';
 import { COMPANY_INFO, COLORADO_CITIES } from '../data/onenationData';
 
 export default function ContactPage({ onOpenBooking, playAudioClick }) {
@@ -22,6 +23,7 @@ export default function ContactPage({ onOpenBooking, playAudioClick }) {
   return (
     <main className="py-12 bg-[#F7F4EE]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <BackButton playAudioClick={playAudioClick} label="Back to Home" />
         
         {/* Header */}
         <div className="max-w-3xl mb-12 space-y-4">

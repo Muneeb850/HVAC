@@ -2,12 +2,14 @@ import React from 'react';
 import { ArrowRight, ShieldCheck, CheckCircle2, Clock, Phone } from 'lucide-react';
 import ServicesMatrix from '../components/ServicesMatrix';
 import FinancingGuarantee from '../components/FinancingGuarantee';
+import BackButton from '../components/BackButton';
 import { COMPANY_INFO } from '../data/onenationData';
 
 export default function ServicesPage({ onOpenBooking, playAudioClick, currentTheme }) {
   return (
     <main className="py-12 bg-[#F7F4EE]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-12">
+        <BackButton playAudioClick={playAudioClick} label="Back to Home" />
         <div className="max-w-3xl space-y-4">
           <div className="text-[11px] font-mono tracking-[0.25em] text-[#8C6C46] uppercase font-semibold">
             COLORADO CLIMATE INFRASTRUCTURE

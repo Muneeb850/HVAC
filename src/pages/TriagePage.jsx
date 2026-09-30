@@ -1,12 +1,14 @@
 import React from 'react';
 import { Phone, AlertTriangle, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
 import DiagnosticWizard from '../components/DiagnosticWizard';
+import BackButton from '../components/BackButton';
 import { COMPANY_INFO } from '../data/onenationData';
 
 export default function TriagePage({ onOpenBooking, playAudioClick, currentTheme }) {
   return (
     <main className="py-12 bg-[#FAF5EE]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-10">
+        <BackButton playAudioClick={playAudioClick} label="Back to Home" />
         {/* Priority Emergency Banner */}
         <div className="p-6 sm:p-8 rounded-3xl bg-[#1C1917] text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 mb-12 border border-stone-800">
           <div className="space-y-2 text-center md:text-left">
