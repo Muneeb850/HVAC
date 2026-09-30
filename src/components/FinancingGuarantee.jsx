@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CreditCard, ShieldCheck, Award, ArrowUpRight, ChevronDown, Check, Flame, Snowflake } from 'lucide-react';
 import { COMPANY_INFO, FAQS } from '../data/onenationData';
 
-export default function FinancingGuarantee({ playAudioClick }) {
+export default function FinancingGuarantee({ playAudioClick, showFaq = false }) {
   const [openFaq, setOpenFaq] = useState(0);
 
   return (
@@ -90,50 +90,52 @@ export default function FinancingGuarantee({ playAudioClick }) {
           </div>
         </div>
 
-        {/* HVAC FAQs Section */}
-        <div className="max-w-3xl mx-auto pt-8 border-t border-[#EAE3D6]">
-          <div className="text-center mb-10">
-            <span className="text-[11px] font-mono tracking-[0.25em] text-[#8C8275] uppercase font-semibold block mb-2">
-              HOMEOWNER CLIMATE QUESTIONS
-            </span>
-            <h3 className="text-3xl sm:text-4xl font-display font-bold uppercase tracking-tight text-[#1C1917]">
-              Frequently Asked Questions
-            </h3>
-          </div>
+        {/* HVAC FAQs Section - Rendered only when showFaq is true (Home Section) */}
+        {showFaq && (
+          <div className="max-w-3xl mx-auto pt-8 border-t border-[#EAE3D6]">
+            <div className="text-center mb-10">
+              <span className="text-[11px] font-mono tracking-[0.25em] text-[#8C8275] uppercase font-semibold block mb-2">
+                HOMEOWNER CLIMATE QUESTIONS
+              </span>
+              <h3 className="text-3xl sm:text-4xl font-display font-bold uppercase tracking-tight text-[#1C1917]">
+                Frequently Asked Questions
+              </h3>
+            </div>
 
-          <div className="space-y-3">
-            {FAQS.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div 
-                  key={idx}
-                  className="rounded-2xl border border-[#E8DFCE] bg-white overflow-hidden transition-all"
-                >
-                  <button
-                    onClick={() => {
-                      if (playAudioClick) playAudioClick();
-                      setOpenFaq(isOpen ? -1 : idx);
-                    }}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4"
+            <div className="space-y-3">
+              {FAQS.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div 
+                    key={idx}
+                    className="rounded-2xl border border-[#E8DFCE] bg-white overflow-hidden transition-all"
                   >
-                    <span className="text-sm font-bold text-[#1C1917] font-sans">
-                      {faq.q}
-                    </span>
-                    <ChevronDown className={`w-4 h-4 text-[#8C6C46] transition-transform duration-200 shrink-0 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`} />
-                  </button>
+                    <button
+                      onClick={() => {
+                        if (playAudioClick) playAudioClick();
+                        setOpenFaq(isOpen ? -1 : idx);
+                      }}
+                      className="w-full p-5 text-left flex items-center justify-between gap-4"
+                    >
+                      <span className="text-sm font-bold text-[#1C1917] font-sans">
+                        {faq.q}
+                      </span>
+                      <ChevronDown className={`w-4 h-4 text-[#8C6C46] transition-transform duration-200 shrink-0 ${
+                        isOpen ? 'rotate-180' : ''
+                      }`} />
+                    </button>
 
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-1 text-xs text-[#6B6358] leading-relaxed font-sans border-t border-[#F2ECE1]">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                    {isOpen && (
+                      <div className="px-5 pb-5 pt-1 text-xs text-[#6B6358] leading-relaxed font-sans border-t border-[#F2ECE1]">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
       </div>
     </section>

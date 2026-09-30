@@ -1,6 +1,5 @@
 import React from 'react';
 import ServiceAreaRadar from '../components/ServiceAreaRadar';
-import ReviewsSection from '../components/ReviewsSection';
 
 export default function CoveragePage({ onOpenBooking, playAudioClick, currentTheme }) {
   return (
@@ -26,14 +25,6 @@ export default function CoveragePage({ onOpenBooking, playAudioClick, currentThe
         playAudioClick={playAudioClick}
         currentTheme={currentTheme}
       />
-
-      {/* Reviews from these areas */}
-      <div className="bg-[#F7F4EE]">
-        <ReviewsSection
-          playAudioClick={playAudioClick}
-          currentTheme={currentTheme}
-        />
-      </div>
     </main>
   );
 }

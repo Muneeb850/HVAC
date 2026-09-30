@@ -42,8 +42,9 @@ export default function HomePage({ onOpenBooking, playAudioClick, currentTheme }
         currentTheme={currentTheme}
       />
 
-      {/* 6. Financing Guarantee & Warranties */}
+      {/* 6. Financing Guarantee, Warranties & Home FAQs */}
       <FinancingGuarantee
+        showFaq={true}
         playAudioClick={playAudioClick}
         currentTheme={currentTheme}
       />
