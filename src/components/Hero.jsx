@@ -14,14 +14,19 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
           className="w-full h-full object-cover object-center brightness-[1.07] contrast-[1.03]"
         />
         
-        {/* Mobile Scrim: 100% Pure Warm Alabaster so mobile colors match laptop perfectly without image discoloration */}
-        <div className="absolute inset-0 lg:hidden pointer-events-none bg-[#F7F4EE]" />
+        {/* Mobile Scrim: Soft Warm Alabaster gradient allowing the image to clearly show while preserving text legibility */}
+        <div 
+          className="block lg:hidden absolute inset-0 pointer-events-none"
+          style={{ 
+            background: 'linear-gradient(to bottom, rgba(247, 244, 238, 0.75) 0%, rgba(247, 244, 238, 0.62) 45%, rgba(247, 244, 238, 0.88) 100%)' 
+          }}
+        />
 
         {/* Desktop Architectural Warm Alabaster Scrim */}
         <div 
           className="hidden lg:block absolute inset-0 pointer-events-none"
           style={{ 
-            background: 'linear-gradient(to right, rgba(247, 244, 238, 1) 0%, rgba(247, 244, 238, 0.90) 52%, rgba(247, 244, 238, 0.40) 80%, rgba(247, 244, 238, 0.10) 100%)' 
+            background: 'linear-gradient(to right, rgba(247, 244, 238, 0.96) 0%, rgba(247, 244, 238, 0.88) 52%, rgba(247, 244, 238, 0.35) 80%, rgba(247, 244, 238, 0.12) 100%)' 
           }}
         />
         <div 
