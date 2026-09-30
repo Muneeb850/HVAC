@@ -64,7 +64,7 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
                 >
                   <div className={`p-2.5 rounded-xl shrink-0 mt-0.5 ${
                     item.severity.includes('CRITICAL') || item.severity.includes('EXTREME')
-                      ? 'bg-red-50 text-red-600'
+                      ? 'bg-[#1C1917] text-white shadow-sm'
                       : 'bg-[#F2ECE1] text-[#8C6C46]'
                   }`}>
                     {getSymptomIcon(item.id)}
@@ -74,7 +74,7 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
                     <div className="flex items-center justify-between gap-2 mb-1">
                       <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold uppercase ${
                         item.severity.includes('CRITICAL') || item.severity.includes('EXTREME')
-                          ? 'bg-red-100 text-red-700'
+                          ? 'bg-[#1C1917] text-white'
                           : 'bg-[#EFE9DF] text-[#785E3E]'
                       }`}>
                         {item.severity}

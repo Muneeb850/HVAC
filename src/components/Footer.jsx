@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import { COMPANY_INFO, COLORADO_CITIES } from '../data/onenationData';
 
@@ -11,7 +12,7 @@ export default function Footer({ onOpenBooking, playAudioClick }) {
           
           {/* Brand Column matching reference logo */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2.5">
+            <Link to="/" onClick={playAudioClick} className="flex items-center gap-2.5">
               <div className="w-2.5 h-6 rounded-full bg-white inline-block" />
               <span className="font-sans font-bold text-2xl tracking-[0.12em] text-white uppercase">
                 ONE NATION
@@ -19,7 +20,7 @@ export default function Footer({ onOpenBooking, playAudioClick }) {
               <span className="text-[10px] font-mono tracking-widest text-[#B8936D] uppercase">
                 HEATING &amp; AIR
               </span>
-            </div>
+            </Link>
 
             <p className="text-xs sm:text-sm text-stone-400 max-w-sm leading-relaxed">
               Colorado Front Range premier heating, ventilation, and air conditioning engineering team. Licensed Master HVAC mechanical contractors serving Denver and Aurora.
@@ -45,18 +46,19 @@ export default function Footer({ onOpenBooking, playAudioClick }) {
             </div>
           </div>
 
-          {/* HVAC Capabilities */}
+          {/* Quick Navigation Pages */}
           <div>
             <h4 className="text-xs font-mono uppercase tracking-wider text-white font-bold mb-4">
-              HVAC Systems
+              Explore Pages
             </h4>
             <ul className="space-y-2.5 text-xs text-stone-400 font-sans">
-              <li><a href="#services" className="hover:text-white transition">Cold-Climate Heat Pumps</a></li>
-              <li><a href="#services" className="hover:text-white transition">96%+ AFUE Gas Furnaces</a></li>
-              <li><a href="#services" className="hover:text-white transition">Precision Central AC</a></li>
-              <li><a href="#services" className="hover:text-white transition">Multi-Zone Mini-Splits</a></li>
-              <li><a href="#services" className="hover:text-white transition">Rooftop Package Units</a></li>
-              <li><a href="#services" className="hover:text-white transition">Whole-Home HEPA &amp; ERV</a></li>
+              <li><Link to="/" onClick={playAudioClick} className="hover:text-white transition">Home Overview</Link></li>
+              <li><Link to="/services" onClick={playAudioClick} className="hover:text-white transition">HVAC Services Fleet</Link></li>
+              <li><Link to="/triage" onClick={playAudioClick} className="hover:text-white transition">Emergency Diagnostic Triage</Link></li>
+              <li><Link to="/system-sizer" onClick={playAudioClick} className="hover:text-white transition">System Sizer &amp; Configurator</Link></li>
+              <li><Link to="/coverage" onClick={playAudioClick} className="hover:text-white transition">Front Range Coverage</Link></li>
+              <li><Link to="/reviews" onClick={playAudioClick} className="hover:text-white transition">Verified Colorado Reviews</Link></li>
+              <li><Link to="/contact" onClick={playAudioClick} className="hover:text-white transition">Contact &amp; Dispatch HQ</Link></li>
             </ul>
           </div>
 
@@ -66,12 +68,12 @@ export default function Footer({ onOpenBooking, playAudioClick }) {
               Front Range Dispatch
             </h4>
             <ul className="space-y-2.5 text-xs text-stone-400 font-sans">
-              <li><a href="#triage" className="hover:text-white transition">24/7 No-Heat Triage</a></li>
-              <li><a href="#triage" className="hover:text-white transition">Frozen AC Coil Rescue</a></li>
-              <li><a href="#coverage" className="hover:text-white transition">Aurora HQ Dispatch (18m)</a></li>
-              <li><a href="#coverage" className="hover:text-white transition">Denver Metro Vans (22m)</a></li>
-              <li><a href="#coverage" className="hover:text-white transition">Boulder &amp; Foothills (34m)</a></li>
-              <li><a href="#calculator" className="hover:text-white transition">Xcel Rebate Estimator</a></li>
+              <li><Link to="/triage" onClick={playAudioClick} className="hover:text-white transition">24/7 No-Heat Triage</Link></li>
+              <li><Link to="/triage" onClick={playAudioClick} className="hover:text-white transition">Frozen AC Coil Rescue</Link></li>
+              <li><Link to="/coverage" onClick={playAudioClick} className="hover:text-white transition">Aurora HQ Dispatch (18m)</Link></li>
+              <li><Link to="/coverage" onClick={playAudioClick} className="hover:text-white transition">Denver Metro Vans (22m)</Link></li>
+              <li><Link to="/coverage" onClick={playAudioClick} className="hover:text-white transition">Boulder &amp; Foothills (34m)</Link></li>
+              <li><Link to="/system-sizer" onClick={playAudioClick} className="hover:text-white transition">Xcel Energy Sizer</Link></li>
             </ul>
           </div>
 
@@ -119,4 +121,3 @@ export default function Footer({ onOpenBooking, playAudioClick }) {
     </footer>
   );
 }
-

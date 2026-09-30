@@ -88,16 +88,16 @@ export default function BeforeAfterSlider({ playAudioClick }) {
                 </div>
               </div>
               <div className="absolute bottom-12 text-center">
-                <span className="text-[10px] font-mono text-red-400 font-bold bg-red-950/80 px-2 py-0.5 rounded border border-red-500/30 inline-block">
+                <span className="text-[10px] font-mono text-amber-300 font-bold bg-[#1C1917]/90 px-2 py-0.5 rounded border border-amber-500/30 inline-block">
                   SEVERE ROOT INTRUSION &amp; CALCITE
                 </span>
               </div>
             </div>
 
             {/* Before Top Label */}
-            <div className="absolute top-6 left-6 bg-slate-900/90 backdrop-blur-md px-4 py-2 rounded-xl border border-red-500/40 text-left">
-              <span className="text-[10px] font-mono uppercase text-red-400 font-bold block flex items-center gap-1">
-                <AlertOctagon className="w-3.5 h-3.5 text-red-400" /> BEFORE: SEVERELY RESTRICTED
+            <div className="absolute top-6 left-6 bg-[#1C1917]/90 backdrop-blur-md px-4 py-2 rounded-xl border border-amber-500/40 text-left">
+              <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block flex items-center gap-1">
+                <AlertOctagon className="w-3.5 h-3.5 text-amber-400" /> BEFORE: SEVERELY RESTRICTED
               </span>
               <span className="text-xs text-white font-medium">Tree Roots • Grease • Mineral Scale</span>
             </div>

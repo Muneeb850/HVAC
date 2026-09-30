@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Clock, Menu, X, ChevronDown, Flame, ThermometerSnowflake } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { Phone, Clock, Menu, X, Flame, ShieldAlert } from 'lucide-react';
 import { COMPANY_INFO } from '../data/onenationData';
 
 export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, playAudioClick }) {
@@ -15,12 +16,13 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
   }, []);
 
   const navLinks = [
-    { label: "Services", href: "#services" },
-    { label: "Heat Pumps", href: "#services" },
-    { label: "Emergency Triage", href: "#triage" },
-    { label: "System Sizer", href: "#calculator" },
-    { label: "Coverage", href: "#coverage" },
-    { label: "Reviews", href: "#reviews" },
+    { label: "Home", to: "/" },
+    { label: "Services", to: "/services" },
+    { label: "Emergency Triage", to: "/triage" },
+    { label: "System Sizer", to: "/system-sizer" },
+    { label: "Coverage", to: "/coverage" },
+    { label: "Reviews", to: "/reviews" },
+    { label: "Contact", to: "/contact" },
   ];
 
   return (
@@ -36,7 +38,11 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
           
           {/* Brand Logo: Clean vertical pill "▮" + Brand Name */}
-          <a href="#" className="flex items-center gap-2.5 group shrink-0">
+          <Link 
+            to="/" 
+            onClick={playAudioClick}
+            className="flex items-center gap-2.5 group shrink-0"
+          >
             <span className="w-2.5 h-6 rounded-full bg-[#1C1917] group-hover:scale-105 transition-transform" />
             <div className="flex items-center gap-2">
               <span className="font-sans font-bold text-xl sm:text-2xl tracking-[0.08em] text-[#1C1917] uppercase whitespace-nowrap">
@@ -47,23 +53,29 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
                 HEATING &amp; AIR
               </span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Nav Links - Perfectly Fitted & Spaced */}
+          {/* Desktop Nav Links - Clean & Fitted */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
+              <NavLink
+                key={link.to}
+                to={link.to}
                 onClick={playAudioClick}
-                className="text-[13px] font-sans font-medium text-[#5A534A] hover:text-[#1C1917] tracking-wide transition-colors whitespace-nowrap"
+                className={({ isActive }) =>
+                  `text-[13px] font-sans tracking-wide transition-colors whitespace-nowrap pb-0.5 ${
+                    isActive 
+                      ? 'text-[#8C6C46] font-bold border-b-2 border-[#8C6C46]' 
+                      : 'text-[#5A534A] hover:text-[#1C1917] font-medium'
+                  }`
+                }
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </nav>
 
-          {/* Right Action: Phone Number & "CONTACT US" pill button */}
+          {/* Right Action: Phone Number & "CONTACT US" button */}
           <div className="hidden sm:flex items-center gap-4 lg:gap-5 shrink-0">
             <a
               href={`tel:${COMPANY_INFO.phone}`}
@@ -73,15 +85,13 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
               <span>(720) 499-4013</span>
             </a>
 
-            <button
-              onClick={() => {
-                if (playAudioClick) playAudioClick();
-                onOpenBooking();
-              }}
+            <Link
+              to="/contact"
+              onClick={playAudioClick}
               className="px-5 py-2 rounded-full border border-[#1C1917] text-[#1C1917] hover:bg-[#1C1917] hover:text-white font-sans text-xs font-semibold tracking-wider uppercase transition-all duration-200 active:scale-95 shadow-sm whitespace-nowrap"
             >
               CONTACT US
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Quick Action: Call Button + Menu Toggle */}
@@ -115,19 +125,25 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-[#FAF5EE] border-b border-[#E8DFCE] px-6 py-6 space-y-4">
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
+                <NavLink
+                  key={link.to}
+                  to={link.to}
                   onClick={() => {
                     if (playAudioClick) playAudioClick();
                     setMobileMenuOpen(false);
                   }}
-                  className="text-sm font-sans font-medium text-[#1C1917] py-2 border-b border-[#EAE3D6]"
+                  className={({ isActive }) =>
+                    `text-sm font-sans py-2.5 border-b border-[#EAE3D6] transition-colors ${
+                      isActive 
+                        ? 'text-[#8C6C46] font-bold' 
+                        : 'text-[#1C1917] font-medium hover:text-[#8C6C46]'
+                    }`
+                  }
                 >
                   {link.label}
-                </a>
+                </NavLink>
               ))}
             </div>
 

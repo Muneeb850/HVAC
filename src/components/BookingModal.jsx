@@ -218,15 +218,19 @@ export default function BookingModal({ isOpen, onClose, initialData, playAudioCl
                         }}
                         className={`p-4 rounded-2xl text-left border-2 transition-all ${
                           formData.urgency === 'emergency'
-                            ? 'bg-red-50/90 border-red-500 text-red-950 shadow-md ring-2 ring-red-500/20'
+                            ? 'bg-[#1C1917] border-[#1C1917] text-white shadow-md ring-2 ring-[#8C6C46]/30'
                             : 'bg-white border-[#E8DFCE] text-[#5A534A] hover:border-[#D5CDBC]'
                         }`}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-red-600 flex items-center gap-1.5 uppercase font-mono">
+                          <span className={`text-xs font-bold flex items-center gap-1.5 uppercase font-mono ${
+                            formData.urgency === 'emergency' ? 'text-amber-400' : 'text-[#8C6C46]'
+                          }`}>
                             <AlertTriangle className="w-3.5 h-3.5" /> Emergency Now
                           </span>
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-100 text-red-700 font-semibold">
+                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-semibold ${
+                            formData.urgency === 'emergency' ? 'bg-white/20 text-white' : 'bg-[#FAF5EE] text-[#8C6C46] border border-[#E8DFCE]'
+                          }`}>
                             &lt; 30 min
                           </span>
                         </div>

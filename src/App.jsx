@@ -1,22 +1,24 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import DiagnosticWizard from './components/DiagnosticWizard';
-import ServicesMatrix from './components/ServicesMatrix';
-import CostCalculator from './components/CostCalculator';
-import ServiceAreaRadar from './components/ServiceAreaRadar';
-import ReviewsSection from './components/ReviewsSection';
-import FinancingGuarantee from './components/FinancingGuarantee';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
-import ThemeSwitcher from './components/ThemeSwitcher';
+import ScrollToTop from './components/ScrollToTop';
+
+// Dedicated Route Pages
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import TriagePage from './pages/TriagePage';
+import SystemSizerPage from './pages/SystemSizerPage';
+import CoveragePage from './pages/CoveragePage';
+import ReviewsPage from './pages/ReviewsPage';
+import ContactPage from './pages/ContactPage';
 
 export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [modalInitialData, setModalInitialData] = useState(null);
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [activeSymptom, setActiveSymptom] = useState(null);
-  const [currentTheme, setCurrentTheme] = useState('nordic'); // 'nordic' default warm alabaster & terracotta stone
+  const [currentTheme, setCurrentTheme] = useState('nordic'); // Warm Alabaster Linen & Charcoal
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', currentTheme);
@@ -54,90 +56,132 @@ export default function App() {
     setBookingModalOpen(true);
   };
 
-  const handleSelectSymptom = (symptomId) => {
-    setActiveSymptom(symptomId);
-    const element = document.getElementById('triage');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div 
-      className="min-h-screen font-sans bg-[#F7F4EE] text-[#1C1917] selection:bg-[#1C1917] selection:text-white"
-    >
-      {/* 1. Header (Dark Section) */}
-      <Navbar
-        onOpenBooking={() => handleOpenBooking()}
-        soundEnabled={soundEnabled}
-        setSoundEnabled={setSoundEnabled}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
+    <Router>
+      <ScrollToTop />
+      <div 
+        className="min-h-screen font-sans bg-[#F7F4EE] text-[#1C1917] selection:bg-[#1C1917] selection:text-white flex flex-col"
+      >
+        {/* Architectural Luxury Persistent Header */}
+        <Navbar
+          onOpenBooking={() => handleOpenBooking()}
+          soundEnabled={soundEnabled}
+          setSoundEnabled={setSoundEnabled}
+          playAudioClick={playAudioClick}
+          currentTheme={currentTheme}
+        />
 
-      {/* 2. Hero Section (DARK SECTION with zero moving elements) */}
-      <Hero
-        onOpenBooking={handleOpenBooking}
-        onSelectSymptom={handleSelectSymptom}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
+        {/* Dynamic Multi-Page Route Outlet */}
+        <div className="flex-1">
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <HomePage 
+                  onOpenBooking={handleOpenBooking} 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+            <Route 
+              path="/services" 
+              element={
+                <ServicesPage 
+                  onOpenBooking={handleOpenBooking} 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+            <Route 
+              path="/triage" 
+              element={
+                <TriagePage 
+                  onOpenBooking={handleOpenBooking} 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+            <Route 
+              path="/system-sizer" 
+              element={
+                <SystemSizerPage 
+                  onOpenBooking={handleOpenBooking} 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+            <Route 
+              path="/calculator" 
+              element={
+                <SystemSizerPage 
+                  onOpenBooking={handleOpenBooking} 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+            <Route 
+              path="/coverage" 
+              element={
+                <CoveragePage 
+                  onOpenBooking={handleOpenBooking} 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+            <Route 
+              path="/reviews" 
+              element={
+                <ReviewsPage 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+            <Route 
+              path="/contact" 
+              element={
+                <ContactPage 
+                  onOpenBooking={handleOpenBooking} 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+            <Route 
+              path="*" 
+              element={
+                <HomePage 
+                  onOpenBooking={handleOpenBooking} 
+                  playAudioClick={playAudioClick} 
+                  currentTheme={currentTheme} 
+                />
+              } 
+            />
+          </Routes>
+        </div>
 
-      {/* 3. Emergency Diagnostic Wizard (CRISP LIGHT SECTION) */}
-      <DiagnosticWizard
-        activeSymptomId={activeSymptom}
-        onBookIssue={(issueId) => handleOpenBooking({ preselectedIssue: issueId })}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
+        {/* Global Footer */}
+        <Footer
+          onOpenBooking={() => handleOpenBooking()}
+          playAudioClick={playAudioClick}
+          currentTheme={currentTheme}
+        />
 
-      {/* 4. Full Infrastructure Services Matrix (CRISP LIGHT SECTION) */}
-      <ServicesMatrix
-        onSelectService={(serviceId) => handleOpenBooking({ service: serviceId })}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
-      {/* 5. Instant Cost & Financing Estimator (LIGHT/DARK DUAL) */}
-      <CostCalculator
-        onBookEstimate={(data) => handleOpenBooking(data)}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
-
-      {/* 8. Front Range Colorado Service Radar (DARK SECTION) */}
-      <ServiceAreaRadar
-        onSelectCity={(city) => handleOpenBooking({ city })}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
-
-      {/* 9. Verified Google Reviews (CRISP LIGHT SECTION) */}
-      <ReviewsSection
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
-
-      {/* 10. Wells Fargo Financing & Master Guarantees (DARK SECTION) */}
-      <FinancingGuarantee
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
-
-      {/* 11. Footer (DARK SECTION) */}
-      <Footer
-        onOpenBooking={() => handleOpenBooking()}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
-
-      {/* Multi-Step Interactive Booking & Dispatch Modal */}
-      <BookingModal
-        isOpen={bookingModalOpen}
-        onClose={() => setBookingModalOpen(false)}
-        initialData={modalInitialData}
-        playAudioClick={playAudioClick}
-        currentTheme={currentTheme}
-      />
-    </div>
+        {/* Multi-Step Interactive Booking & Dispatch Modal */}
+        <BookingModal
+          isOpen={bookingModalOpen}
+          onClose={() => setBookingModalOpen(false)}
+          initialData={modalInitialData}
+          playAudioClick={playAudioClick}
+          currentTheme={currentTheme}
+        />
+      </div>
+    </Router>
   );
 }
