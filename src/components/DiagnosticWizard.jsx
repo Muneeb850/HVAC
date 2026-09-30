@@ -91,11 +91,11 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
         </div>
 
         {/* Interactive Wizard Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 lg:items-stretch">
           
           {/* Left Column: Highly Tactile & Fitted Symptom Cards */}
-          <div className="lg:col-span-5 space-y-3 min-w-0 w-full">
-            <div className="flex items-center justify-between text-xs font-mono uppercase text-[#787168] tracking-wider mb-1.5 font-semibold px-1">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-2.5 min-w-0 w-full">
+            <div className="flex items-center justify-between text-xs font-mono uppercase text-[#787168] tracking-wider mb-0.5 font-semibold px-1">
               <span>Select Current Symptom:</span>
               <span className="text-[10px] text-[#8C6C46] font-bold bg-[#F2ECE1] px-2 py-0.5 rounded-full">
                 5 Active Protocols
@@ -111,14 +111,14 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
                     setSelectedId(item.id);
                     if (playAudioClick) playAudioClick();
                   }}
-                  className={`w-full p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-200 flex items-center gap-3.5 border group relative cursor-pointer ${
+                  className={`w-full p-3 sm:p-3.5 rounded-2xl text-left transition-all duration-200 flex items-center gap-3 border group relative cursor-pointer ${
                     isSelected
                       ? 'bg-white border-2 border-[#8C6C46] shadow-md ring-2 ring-[#8C6C46]/20'
                       : 'bg-white/85 border border-[#E8DFCE] hover:border-[#8C6C46]/60 hover:bg-white hover:shadow-sm'
                   }`}
                 >
                   {/* Icon Badge with Dual Tone */}
-                  <div className={`w-10 h-10 rounded-xl shrink-0 flex items-center justify-center transition-all duration-200 ${
+                  <div className={`w-9 h-9 rounded-xl shrink-0 flex items-center justify-center transition-all duration-200 ${
                     isSelected
                       ? 'bg-[#1C1917] text-amber-300 shadow-sm'
                       : 'bg-[#FAF5EE] border border-[#E5DAC8] text-[#8C6C46] group-hover:bg-[#EFE7D8]'
@@ -128,7 +128,7 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
 
                   {/* Text Details */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2 mb-1">
+                    <div className="flex items-center justify-between gap-2 mb-0.5">
                       <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
                         isSelected
                           ? 'bg-[#1C1917] text-white shadow-sm'
@@ -142,7 +142,7 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
                       </span>
                     </div>
 
-                    <div className={`text-xs sm:text-sm font-bold leading-snug break-words transition-colors ${
+                    <div className={`text-xs sm:text-sm font-bold leading-snug break-words transition-colors line-clamp-1 ${
                       isSelected ? 'text-[#1C1917]' : 'text-[#2D2823] group-hover:text-[#8C6C46]'
                     }`}>
                       {item.symptom}
@@ -162,125 +162,127 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
             })}
           </div>
 
-          {/* Right Column: Prescribed Action & Containment Console Card */}
-          <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 border border-[#E8DFCE] shadow-lg relative min-w-0 w-full overflow-hidden">
+          {/* Right Column: Prescribed Action & Containment Console Card fitted to Left Column */}
+          <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-5 lg:p-6 border border-[#E8DFCE] shadow-lg relative min-w-0 w-full flex flex-col justify-between">
             
-            {/* Top Architectural Accent Line */}
-            <div className="h-1 w-full rounded-full bg-gradient-to-r from-[#8C6C46] via-[#B8936D] to-[#1C1917] mb-5 sm:mb-6" />
+            <div>
+              {/* Top Architectural Accent Line */}
+              <div className="h-1 w-full rounded-full bg-gradient-to-r from-[#8C6C46] via-[#B8936D] to-[#1C1917] mb-3.5" />
 
-            {/* Top Bar: Diagnostic Protocol & Live Status */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 sm:pb-5 border-b border-[#F2ECE1]">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#787168] font-semibold">
-                  DIAGNOSTIC PROTOCOL:
-                </span>
-                <span className="text-[11px] font-mono font-bold text-[#1C1917] bg-[#FAF5EE] px-2.5 py-0.5 rounded-full border border-[#E8DFCE]">
-                  TRG-{currentSymptom.id.toUpperCase()}
-                </span>
-              </div>
-
-              <span className="text-[11px] font-mono font-bold px-3 py-1 rounded-full uppercase bg-[#1C1917] text-white tracking-wider flex items-center gap-1.5 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                <span>{currentSymptom.urgency}</span>
-              </span>
-            </div>
-
-            {/* Main Symptom Title Banner */}
-            <div className="pt-4 sm:pt-5 pb-2 space-y-1">
-              <div className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#8C6C46]" />
-                <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#8C8275] font-semibold">
-                  ACTIVE SYSTEM CONDITION
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-medium text-[#1C1917] leading-snug break-words">
-                {currentSymptom.symptom}
-              </h3>
-            </div>
-
-            {/* Authoritative First-Aid Containment Banner */}
-            <div className="my-4 sm:my-5 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#FAF5EE] via-[#F5ECE0] to-[#FAF5EE] border border-[#8C6C46]/35 shadow-sm relative">
-              <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-[#1C1917] text-white shadow-md shrink-0">
-                  <AlertCircle className="w-5 h-5 text-amber-400" />
+              {/* Top Bar: Diagnostic Protocol & Live Status */}
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-[#F2ECE1]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#787168] font-semibold">
+                    DIAGNOSTIC PROTOCOL:
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#1C1917] bg-[#FAF5EE] px-2.5 py-0.5 rounded-full border border-[#E8DFCE]">
+                    TRG-{currentSymptom.id.toUpperCase()}
+                  </span>
                 </div>
-                <div className="space-y-1 flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-xs font-mono uppercase tracking-wider font-bold text-[#1C1917]">
-                      Immediate First-Aid Containment Step:
-                    </span>
-                    <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#1C1917] text-white font-mono font-bold tracking-wider">
-                      STEP 1 ACTION
+
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full uppercase bg-[#1C1917] text-white tracking-wider flex items-center gap-1.5 shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                  <span>{currentSymptom.urgency}</span>
+                </span>
+              </div>
+
+              {/* Main Symptom Title Banner */}
+              <div className="pt-2.5 pb-1 space-y-0.5">
+                <div className="flex items-center gap-1.5">
+                  <Sparkles className="w-3 h-3 text-[#8C6C46]" />
+                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-[0.2em] text-[#8C8275] font-semibold">
+                    ACTIVE SYSTEM CONDITION
+                  </span>
+                </div>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-display font-medium text-[#1C1917] leading-snug break-words">
+                  {currentSymptom.symptom}
+                </h3>
+              </div>
+
+              {/* Authoritative First-Aid Containment Banner */}
+              <div className="my-2.5 p-3 sm:p-3.5 rounded-xl bg-gradient-to-br from-[#FAF5EE] via-[#F5ECE0] to-[#FAF5EE] border border-[#8C6C46]/35 shadow-sm relative">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-xl bg-[#1C1917] text-white shadow-md shrink-0 mt-0.5">
+                    <AlertCircle className="w-4 h-4 text-amber-400" />
+                  </div>
+                  <div className="space-y-0.5 flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center justify-between gap-1.5">
+                      <span className="text-xs font-mono uppercase tracking-wider font-bold text-[#1C1917]">
+                        Immediate First-Aid Containment Step:
+                      </span>
+                      <span className="text-[9px] px-2 py-0.5 rounded-full bg-[#1C1917] text-white font-mono font-bold tracking-wider">
+                        STEP 1 ACTION
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#3A332B] font-sans leading-relaxed pt-0.5">
+                      {currentSymptom.action}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Prescribed Solution & Guarantee 2-Tile Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-2.5">
+                
+                {/* Tile 1 */}
+                <div className="p-3 rounded-xl bg-gradient-to-b from-[#FAF5EE] to-[#F5ECE0] border border-[#E5DAC8] shadow-sm space-y-1">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 text-[11px] font-mono uppercase text-[#787168] font-semibold">
+                      <div className="w-5 h-5 rounded-md bg-white shadow-sm flex items-center justify-center text-[#8C6C46]">
+                        <Wrench className="w-3 h-3" />
+                      </div>
+                      <span>Service Solution</span>
+                    </div>
+                    <span className="text-[9px] font-mono uppercase tracking-wider text-[#8C6C46] font-bold bg-white/70 px-1.5 py-0.5 rounded border border-[#E5DAC8]">
+                      OEM Stock
                     </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-[#3A332B] font-sans leading-relaxed pt-1">
-                    {currentSymptom.action}
+
+                  <div className="text-xs sm:text-sm font-bold text-[#1C1917] leading-snug pt-0.5">
+                    {currentSymptom.serviceMatch}
+                  </div>
+                  <p className="text-[11px] text-[#6B6358] leading-relaxed line-clamp-2">
+                    Master HVAC technicians arrive with universal ignitors, blower motors, and digital combustion analyzers on truck.
                   </p>
                 </div>
-              </div>
-            </div>
 
-            {/* Prescribed Solution & Guarantee 2-Tile Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
-              
-              {/* Tile 1 */}
-              <div className="p-4 rounded-xl bg-gradient-to-b from-[#FAF5EE] to-[#F5ECE0] border border-[#E5DAC8] shadow-sm space-y-1.5">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono uppercase text-[#787168] font-semibold">
-                    <div className="w-6 h-6 rounded-lg bg-white shadow-sm flex items-center justify-center text-[#8C6C46]">
-                      <Wrench className="w-3 h-3" />
+                {/* Tile 2 */}
+                <div className="p-3 rounded-xl bg-gradient-to-b from-[#FAF5EE] to-[#F5ECE0] border border-[#E5DAC8] shadow-sm space-y-1">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 text-[11px] font-mono uppercase text-[#787168] font-semibold">
+                      <div className="w-5 h-5 rounded-md bg-white shadow-sm flex items-center justify-center text-[#8C6C46]">
+                        <ShieldCheck className="w-3 h-3" />
+                      </div>
+                      <span>Pricing Standard</span>
                     </div>
-                    <span>Service Solution</span>
+                    <span className="text-[9px] font-mono uppercase tracking-wider text-[#8C6C46] font-bold bg-white/70 px-1.5 py-0.5 rounded border border-[#E5DAC8]">
+                      No Surprises
+                    </span>
                   </div>
-                  <span className="text-[9px] font-mono uppercase tracking-wider text-[#8C6C46] font-bold bg-white/70 px-2 py-0.5 rounded border border-[#E5DAC8]">
-                    OEM Stock
-                  </span>
-                </div>
 
-                <div className="text-sm font-bold text-[#1C1917] leading-snug pt-0.5">
-                  {currentSymptom.serviceMatch}
-                </div>
-                <p className="text-[11px] text-[#6B6358] leading-relaxed">
-                  Master HVAC technicians arrive with universal ignitors, blower motors, and digital combustion analyzers on truck.
-                </p>
-              </div>
-
-              {/* Tile 2 */}
-              <div className="p-4 rounded-xl bg-gradient-to-b from-[#FAF5EE] to-[#F5ECE0] border border-[#E5DAC8] shadow-sm space-y-1.5">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono uppercase text-[#787168] font-semibold">
-                    <div className="w-6 h-6 rounded-lg bg-white shadow-sm flex items-center justify-center text-[#8C6C46]">
-                      <ShieldCheck className="w-3 h-3" />
-                    </div>
-                    <span>Pricing Standard</span>
+                  <div className="text-xs sm:text-sm font-bold text-[#1C1917] leading-snug pt-0.5">
+                    Written Flat-Rate Estimate
                   </div>
-                  <span className="text-[9px] font-mono uppercase tracking-wider text-[#8C6C46] font-bold bg-white/70 px-2 py-0.5 rounded border border-[#E5DAC8]">
-                    No Surprises
-                  </span>
+                  <p className="text-[11px] text-[#6B6358] leading-relaxed line-clamp-2">
+                    Full diagnostic breakdown and clear written quote approved by you before any mechanical repair begins.
+                  </p>
                 </div>
 
-                <div className="text-sm font-bold text-[#1C1917] leading-snug pt-0.5">
-                  Written Flat-Rate Estimate
-                </div>
-                <p className="text-[11px] text-[#6B6358] leading-relaxed">
-                  Full diagnostic breakdown and clear written quote approved by you before any mechanical repair begins.
-                </p>
               </div>
-
             </div>
 
             {/* Live Dispatch Actions & Hotline Footer */}
-            <div className="pt-4 sm:pt-5 border-t border-[#F2ECE1] flex flex-col sm:flex-row items-center justify-between gap-3.5">
-              <div className="text-[11px] font-mono text-[#787168] flex items-center gap-2 text-center sm:text-left">
+            <div className="pt-3 mt-2 border-t border-[#F2ECE1] flex flex-col sm:flex-row items-center justify-between gap-2.5">
+              <div className="text-[10px] sm:text-[11px] font-mono text-[#787168] flex items-center gap-1.5 text-center sm:text-left">
                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                <span>Denver &bull; Aurora Average Arrival: <strong className="text-[#1C1917]">18 &ndash; 35 Min ETA</strong></span>
+                <span>Denver &bull; Aurora Arrival: <strong className="text-[#1C1917]">18 &ndash; 35 Min ETA</strong></span>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
-                  className="w-full sm:w-auto px-4 py-2.5 rounded-full border border-[#1C1917] text-[#1C1917] hover:bg-[#1C1917] hover:text-white font-mono text-xs font-semibold tracking-wider uppercase transition text-center shadow-sm"
+                  className="w-full sm:w-auto px-3.5 py-2 rounded-full border border-[#1C1917] text-[#1C1917] hover:bg-[#1C1917] hover:text-white font-mono text-[11px] font-semibold tracking-wider uppercase transition text-center shadow-sm"
                 >
                   CALL (720) 499-4013
                 </a>
@@ -290,7 +292,7 @@ export default function DiagnosticWizard({ onBookIssue, playAudioClick, activeSy
                     if (playAudioClick) playAudioClick();
                     onBookIssue(currentSymptom.id);
                   }}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#1C1917] hover:bg-[#8C6C46] text-white font-sans text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all group cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#1C1917] hover:bg-[#8C6C46] text-white font-sans text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all group cursor-pointer"
                 >
                   <span>Dispatch Tech for This Issue</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
