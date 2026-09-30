@@ -14,13 +14,8 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
           className="w-full h-full object-cover object-center brightness-[1.07] contrast-[1.03]"
         />
         
-        {/* Mobile Scrim: Exact Warm Alabaster so mobile colors match laptop 100% */}
-        <div 
-          className="absolute inset-0 lg:hidden pointer-events-none"
-          style={{ 
-            background: 'linear-gradient(to bottom, rgba(247, 244, 238, 0.96) 0%, rgba(247, 244, 238, 0.92) 55%, rgba(247, 244, 238, 0.85) 100%)' 
-          }}
-        />
+        {/* Mobile Scrim: 100% Pure Warm Alabaster so mobile colors match laptop perfectly without image discoloration */}
+        <div className="absolute inset-0 lg:hidden pointer-events-none bg-[#F7F4EE]" />
 
         {/* Desktop Architectural Warm Alabaster Scrim */}
         <div 
@@ -46,9 +41,9 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
           {/* Left Column: Typography & Action */}
           <div className="lg:col-span-7 space-y-6">
             {/* Small uppercase tag */}
-            <div className="text-[10px] sm:text-[11px] font-sans tracking-[0.2em] sm:tracking-[0.25em] text-[#8C8275] uppercase font-semibold flex items-center gap-2">
+            <div className="text-[10px] sm:text-[11px] font-sans tracking-[0.16em] sm:tracking-[0.25em] text-[#8C8275] uppercase font-semibold flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#8C6C46] shrink-0" />
-              <span className="truncate">CRAFTING CLIMATE INFRASTRUCTURE. COLORADO.</span>
+              <span>CRAFTING CLIMATE INFRASTRUCTURE &bull; COLORADO</span>
             </div>
 
             {/* Massive Editorial Serif Headline matching theme typography */}
@@ -79,7 +74,7 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
 
               <a
                 href={`tel:${COMPANY_INFO.phone}`}
-                className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full border border-[#D5CDBC] text-[#1C1917] hover:border-[#1C1917] bg-white/80 backdrop-blur-sm font-mono text-xs font-semibold tracking-wide transition-all"
+                className="w-full sm:w-auto text-center px-6 py-3.5 rounded-full border border-[#D5CDBC] text-[#1C1917] hover:border-[#1C1917] bg-white font-mono text-xs font-semibold tracking-wide transition-all shadow-sm"
               >
                 CALL (720) 499-4013
               </a>
@@ -93,7 +88,7 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
                 if (playAudioClick) playAudioClick();
                 onOpenBooking({ service: 'rooftop-package-units' });
               }}
-              className="bg-white/95 backdrop-blur-md p-6 sm:p-7 rounded-3xl shadow-2xl border border-white/90 space-y-4 cursor-pointer hover:scale-[1.01] transition-transform duration-300"
+              className="bg-white p-6 sm:p-7 rounded-3xl shadow-2xl shadow-stone-900/5 border border-[#EAE3D6] space-y-4 cursor-pointer hover:scale-[1.01] transition-transform duration-300"
             >
               <div className="flex items-center justify-between pb-3 border-b border-[#EAE3D6]">
                 <div className="flex items-center gap-2">

@@ -31,5 +31,6 @@ Thumbs.db
 
 # Temporary screenshots / mockups
 mockup_pictures/
+scratch/
 *.png
 !public/**

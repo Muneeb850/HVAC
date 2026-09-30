@@ -4,7 +4,7 @@
 
 /* Theme Color System Variables & Mobile Color Lock */
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -60,32 +60,6 @@
   --accent-glow: rgba(220, 38, 38, 0.15);
   --badge-bg: #FEF2F2;
   --badge-text: #991B1B;
-}
-
-[data-theme="nordic"] {
-  /* Dark Sections: Warm Charcoal */
-  --bg-dark-primary: #121417;
-  --bg-dark-secondary: #1A1D21;
-  --bg-dark-card: #22262B;
-  --border-dark: #2E3339;
-  --text-dark-primary: #F5F4F0;
-  --text-dark-secondary: #A0A5AA;
-
-  /* Light Sections: Warm Alabaster Stone */
-  --bg-light-primary: #F9F8F5;
-  --bg-light-secondary: #F2EFE9;
-  --bg-light-card: #FFFFFF;
-  --border-light: #E5E0D6;
-  --text-light-primary: #1A1C1E;
-  --text-light-secondary: #5C6066;
-
-  /* Accents: Terracotta Copper & Brass */
-  --accent-primary: #C85A32;
-  --accent-primary-hover: #AC4823;
-  --accent-secondary: #C29B38;
-  --accent-glow: rgba(200, 90, 50, 0.15);
-  --badge-bg: #FFF7ED;
-  --badge-text: #9A3412;
 }
 
 [data-theme="steel"] {
