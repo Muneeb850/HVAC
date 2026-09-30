@@ -207,7 +207,7 @@ export const SYMPTOMS_WIZARD = [
   {
     id: "no-heat",
     symptom: "Furnace blowing cold air or system locked out during freezing freeze",
-    severity: "CRITICAL EMERGENCY",
+    severity: "EMERGENCY",
     urgency: "Dispatch immediately (< 30 min)",
     action: "Check thermostat battery and emergency switch. If furnace attempts ignition 3 times and clicks off, do not force restart. Call priority dispatch.",
     serviceMatch: "24/7 Emergency No-Heat & Blower Rescue",
