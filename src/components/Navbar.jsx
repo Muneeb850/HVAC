@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Phone, Clock, Menu, X, Flame, ShieldAlert } from 'lucide-react';
+import { Phone, Clock, Menu, X } from 'lucide-react';
 import { COMPANY_INFO } from '../data/onenationData';
 
 export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, playAudioClick }) {
@@ -26,104 +26,119 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
 
   return (
     <>
-      {/* Architectural Luxury Navbar */}
-      <header 
-        className={`sticky top-0 z-40 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-[#F7F4EE]/95 backdrop-blur-md shadow-sm border-b border-[#EAE3D6] py-3.5' 
-            : 'bg-[#F7F4EE] py-4.5 border-b border-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
-          
-          {/* Brand Logo: Clean vertical pill "▮" + Brand Name */}
-          <Link 
-            to="/" 
-            onClick={playAudioClick}
-            className="flex items-center gap-2.5 group shrink-0"
-          >
-            <span className="w-2.5 h-6 rounded-full bg-[#1C1917] group-hover:scale-105 transition-transform" />
-            <div className="flex items-center gap-2">
-              <span className="font-sans font-bold text-xl sm:text-2xl tracking-[0.08em] text-[#1C1917] uppercase whitespace-nowrap">
-                ONE NATION
-              </span>
-              <span className="hidden xl:inline-block w-px h-4 bg-[#D5CDBC]" />
-              <span className="text-[10px] font-mono tracking-widest text-[#8C6C46] uppercase hidden xl:inline-block font-semibold whitespace-nowrap">
-                HEATING &amp; AIR
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Nav Links - Clean & Fitted */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                onClick={playAudioClick}
-                className={({ isActive }) =>
-                  `text-[13px] font-sans tracking-wide transition-colors whitespace-nowrap pb-0.5 ${
-                    isActive 
-                      ? 'text-[#8C6C46] font-bold border-b-2 border-[#8C6C46]' 
-                      : 'text-[#5A534A] hover:text-[#1C1917] font-medium'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </nav>
-
-          {/* Right Action: Phone Number & "CONTACT US" button */}
-          <div className="hidden sm:flex items-center gap-4 lg:gap-5 shrink-0">
-            <a
-              href={`tel:${COMPANY_INFO.phone}`}
-              className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#1C1917] hover:text-[#8C6C46] transition whitespace-nowrap"
+      {/* 
+        Responsive Header:
+        - Mobile (< lg): STICKY top-0, edge-to-edge, flush border-b.
+        - Laptop (lg+): FLOATING rounded-full island with top margin & shadow.
+      */}
+      <header className="sticky top-0 lg:fixed lg:top-4 lg:inset-x-0 z-50 w-full transition-all duration-300 px-0 lg:px-6 pointer-events-none">
+        
+        {/* Main Nav Bar Container */}
+        <div 
+          className={`w-full lg:max-w-6xl xl:max-w-7xl mx-auto transition-all duration-300 pointer-events-auto ${
+            /* Mobile Styles: Flush sticky bar */
+            'px-5 sm:px-6 py-3.5 border-b border-[#EAE3D6] bg-[#F7F4EE]/95 backdrop-blur-md ' +
+            /* Laptop / Desktop Styles: Floating Island Pill */
+            'lg:px-8 lg:py-2.5 lg:rounded-full lg:border lg:shadow-xl lg:shadow-stone-900/5 ' +
+            (scrolled 
+              ? 'lg:bg-[#F7F4EE]/98 lg:border-[#D8CEBA] lg:shadow-2xl' 
+              : 'lg:bg-[#F7F4EE]/90 lg:border-[#EAE3D6]')
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            
+            {/* Brand Logo: Clean vertical pill "▮" + Brand Name */}
+            <Link 
+              to="/" 
+              onClick={() => {
+                if (playAudioClick) playAudioClick();
+                setMobileMenuOpen(false);
+              }}
+              className="flex items-center gap-2.5 group shrink-0"
             >
-              <Phone className="w-3.5 h-3.5 text-[#8C6C46]" />
-              <span>(720) 499-4013</span>
-            </a>
-
-            <Link
-              to="/contact"
-              onClick={playAudioClick}
-              className="px-5 py-2 rounded-full border border-[#1C1917] text-[#1C1917] hover:bg-[#1C1917] hover:text-white font-sans text-xs font-semibold tracking-wider uppercase transition-all duration-200 active:scale-95 shadow-sm whitespace-nowrap"
-            >
-              CONTACT US
+              <span className="w-2.5 h-6 rounded-full bg-[#1C1917] group-hover:scale-105 transition-transform" />
+              <div className="flex items-center gap-2">
+                <span className="font-sans font-bold text-xl sm:text-2xl tracking-[0.08em] text-[#1C1917] uppercase whitespace-nowrap">
+                  ONE NATION
+                </span>
+                <span className="hidden xl:inline-block w-px h-4 bg-[#D5CDBC]" />
+                <span className="text-[10px] font-mono tracking-widest text-[#8C6C46] uppercase hidden xl:inline-block font-semibold whitespace-nowrap">
+                  HEATING &amp; AIR
+                </span>
+              </div>
             </Link>
-          </div>
 
-          {/* Mobile Quick Action: Call Button + Menu Toggle */}
-          <div className="flex sm:hidden items-center gap-2 shrink-0">
-            <a
-              href={`tel:${COMPANY_INFO.phone}`}
-              className="p-2 rounded-xl text-[#8C6C46] bg-[#FAF5EE] border border-[#E8DFCE] active:scale-95 transition"
-              aria-label="Call (720) 499-4013"
-            >
-              <Phone className="w-4 h-4" />
-            </a>
+            {/* Desktop Nav Links - Clean & Fitted */}
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  onClick={playAudioClick}
+                  className={({ isActive }) =>
+                    `text-[13px] font-sans tracking-wide transition-colors whitespace-nowrap py-1 ${
+                      isActive 
+                        ? 'text-[#8C6C46] font-bold border-b-2 border-[#8C6C46]' 
+                        : 'text-[#5A534A] hover:text-[#1C1917] font-medium'
+                    }`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </nav>
 
+            {/* Right Action: Phone Number & "CONTACT US" button */}
+            <div className="hidden sm:flex items-center gap-4 lg:gap-5 shrink-0">
+              <a
+                href={`tel:${COMPANY_INFO.phone}`}
+                className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#1C1917] hover:text-[#8C6C46] transition whitespace-nowrap"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#8C6C46]" />
+                <span>(720) 499-4013</span>
+              </a>
+
+              <Link
+                to="/contact"
+                onClick={playAudioClick}
+                className="px-5 py-2 rounded-full border border-[#1C1917] text-[#1C1917] hover:bg-[#1C1917] hover:text-white font-sans text-xs font-semibold tracking-wider uppercase transition-all duration-200 active:scale-95 shadow-sm whitespace-nowrap"
+              >
+                CONTACT US
+              </Link>
+            </div>
+
+            {/* Mobile Quick Action: Call Button + Menu Toggle */}
+            <div className="flex sm:hidden items-center gap-2 shrink-0">
+              <a
+                href={`tel:${COMPANY_INFO.phone}`}
+                className="p-2 rounded-xl text-[#8C6C46] bg-[#FAF5EE] border border-[#E8DFCE] active:scale-95 transition"
+                aria-label="Call (720) 499-4013"
+              >
+                <Phone className="w-4 h-4" />
+              </a>
+
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-xl text-[#1C1917] hover:bg-[#EFEAE0] transition"
+                aria-label="Toggle Navigation"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+
+            {/* Tablet Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-[#1C1917] hover:bg-[#EFEAE0] transition"
-              aria-label="Toggle Navigation"
+              className="hidden sm:block lg:hidden p-2 rounded-xl text-[#1C1917] hover:bg-[#EFEAE0] transition"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-
-          {/* Tablet Menu Toggle Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="hidden sm:block lg:hidden p-2 rounded-xl text-[#1C1917] hover:bg-[#EFEAE0] transition"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Menu (Sticky with Header) */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#FAF5EE] border-b border-[#E8DFCE] px-6 py-6 space-y-4">
+          <div className="lg:hidden pointer-events-auto bg-[#FAF5EE] border-b border-[#E8DFCE] px-6 py-6 space-y-4 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <NavLink

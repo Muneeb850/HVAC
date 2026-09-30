@@ -70,8 +70,8 @@ export default function App() {
           currentTheme={currentTheme}
         />
 
-        {/* Dynamic Multi-Page Route Outlet */}
-        <div className="flex-1">
+        {/* Dynamic Multi-Page Route Outlet (with top clearance for floating laptop navbar) */}
+        <div className="flex-1 lg:pt-24">
           <Routes>
             <Route 
               path="/" 
