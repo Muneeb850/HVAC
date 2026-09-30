@@ -79,7 +79,7 @@ export const SERVICES = [
     badge: "Peak Summer Comfort",
     estimateScope: "Transparent Written Estimate",
     eta: "Same-Day Dispatch",
-    image: "/images/hvac_condenser_card.jpg",
+    image: "/images/hvac_central_ac.jpg",
     tags: ["Multi-Stage SEER2", "Same-Day Dispatch"],
     description: "Engineered cooling systems built to handle blazing 95°F+ Front Range heatwaves with optimized multi-stage compressors and eco-friendly R-454B/R-410A refrigerant.",
     features: [
@@ -99,7 +99,7 @@ export const SERVICES = [
     badge: "Zero Ductwork Required",
     estimateScope: "Room-by-Room Sizing Quote",
     eta: "1-2 Days",
-    image: "/images/hvac_cooling_ac.jpg",
+    image: "/images/hvac_mini_split.jpg",
     tags: ["Room-by-Room Control", "Zero Ductwork Required"],
     description: "Targeted independent room-by-room heating and cooling for historic Denver homes, modern additions, sunrooms, and detached garages.",
     features: [
