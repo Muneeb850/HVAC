@@ -66,7 +66,7 @@ export default function ReviewsSection({ playAudioClick }) {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-start">
           {filteredReviews.map((rev, index) => (
             <div
               key={index}
@@ -84,7 +84,7 @@ export default function ReviewsSection({ playAudioClick }) {
                   </span>
                 </div>
 
-                <p className="text-[#3D3730] text-xs sm:text-sm leading-relaxed mb-6 font-sans italic">
+                <p className="text-[#3D3730] text-xs sm:text-sm leading-relaxed mb-6 font-sans italic line-clamp-5">
                   "{rev.quote}"
                 </p>
               </div>
