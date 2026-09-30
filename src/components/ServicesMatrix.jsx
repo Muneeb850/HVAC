@@ -16,7 +16,7 @@ import { SERVICES } from '../data/onenationData';
 
 export default function ServicesMatrix({ onSelectService, playAudioClick }) {
   const [filter, setFilter] = useState('all');
-  const [expandedServiceId, setExpandedServiceId] = useState(null);
+  const [expandedServiceIds, setExpandedServiceIds] = useState(new Set());
 
   // Featured 3 Cards matching the reference layout: 01 Heating Systems, 02 Cooling & AC, 03 Air Quality
   const architecturalCategories = [
@@ -58,7 +58,15 @@ export default function ServicesMatrix({ onSelectService, playAudioClick }) {
 
   const toggleExpand = (id) => {
     if (playAudioClick) playAudioClick();
-    setExpandedServiceId(prev => prev === id ? null : id);
+    setExpandedServiceIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
   };
 
   const getServiceIcon = (id) => {
@@ -179,85 +187,124 @@ export default function ServicesMatrix({ onSelectService, playAudioClick }) {
             </div>
           </div>
 
-          {/* Desktop View (md and up): Full, spacious, architectural laptop cards (White/Warm Alabaster, NOT black) */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-            {filteredServices.map((service) => (
-              <div
-                key={service.id}
-                className="bg-gradient-to-b from-white via-white to-[#FDFBF7] rounded-3xl p-7 border border-[#E8DFCE] hover:border-[#8C6C46]/70 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
-              >
-                {/* Subtle Top Accent Glow on Hover */}
-                <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#8C6C46] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0 right-0" />
+          {/* Desktop View (md and up): Sleek, compact architectural laptop cards with interactive "View Details" expansion */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-start">
+            {filteredServices.map((service) => {
+              const isExpanded = expandedServiceIds.has(service.id);
 
-                <div>
-                  {/* Top Badges */}
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-gradient-to-r from-[#FAF5EE] to-[#F5ECE0] text-[#8C6C46] border border-[#E5DAC8] font-bold shadow-sm">
-                      {service.badge}
-                    </span>
-                    <span className="text-[11px] font-mono text-[#8C8275] flex items-center gap-1 font-medium bg-[#FAF5EE] px-2.5 py-0.5 rounded-full border border-[#EAE3D6]">
-                      <Clock className="w-3 h-3 text-[#8C6C46]" />
-                      {service.eta}
-                    </span>
-                  </div>
+              return (
+                <div
+                  key={service.id}
+                  className="bg-gradient-to-b from-white via-white to-[#FDFBF7] rounded-[24px] p-5 lg:p-6 border border-[#E8DFCE] hover:border-[#8C6C46]/70 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                >
+                  {/* Subtle Top Accent Glow on Hover */}
+                  <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#8C6C46] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0 right-0" />
 
-                  {/* Picture Header on Laptop */}
-                  <div className="relative h-44 w-full rounded-2xl overflow-hidden mb-4 shrink-0 bg-[#EFE9DF]">
-                    <img 
-                      src={service.image} 
-                      alt={service.title} 
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                    <div className="absolute bottom-2.5 left-3 flex items-center gap-1.5 text-[11px] font-mono text-white font-medium drop-shadow-sm">
-                      <span>{service.categoryTag || service.badge}</span>
+                  <div>
+                    {/* Top Badges */}
+                    <div className="flex items-center justify-between gap-2 mb-3.5">
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-gradient-to-r from-[#FAF5EE] to-[#F5ECE0] text-[#8C6C46] border border-[#E5DAC8] font-bold shadow-sm">
+                        {service.badge}
+                      </span>
+                      <div className="w-8 h-8 rounded-xl bg-[#1C1917] text-amber-400 border border-stone-800 flex items-center justify-center shrink-0 shadow-sm">
+                        {getServiceIcon(service.id)}
+                      </div>
                     </div>
+
+                    {/* Picture Header on Laptop */}
+                    <div className="relative h-36 lg:h-38 w-full rounded-2xl overflow-hidden mb-3.5 shrink-0 bg-[#EFE9DF]">
+                      <img 
+                        src={service.image} 
+                        alt={service.title} 
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute bottom-2.5 left-3 flex items-center gap-1.5 text-[10px] font-mono text-white font-medium drop-shadow-sm">
+                        <span>{service.categoryTag || service.badge}</span>
+                      </div>
+                      <div className="absolute bottom-2.5 right-3 flex items-center gap-1 text-[10px] font-mono text-white/90 bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-full border border-white/20">
+                        <Clock className="w-3 h-3 text-amber-300" />
+                        <span>{service.eta}</span>
+                      </div>
+                    </div>
+
+                    <h4 className="text-lg font-display font-bold text-[#1C1917] mb-1.5 leading-snug group-hover:text-[#8C6C46] transition-colors">
+                      {service.shortTitle || service.title}
+                    </h4>
+
+                    <p className="text-xs text-[#6B6358] mb-3 leading-relaxed font-sans line-clamp-2">
+                      {service.description}
+                    </p>
+
+                    {/* Feature Tag Pills */}
+                    <div className="flex flex-wrap gap-1.5 mb-3.5">
+                      {service.tags ? (
+                        service.tags.map((tag, tIdx) => (
+                          <span 
+                            key={tIdx} 
+                            className="text-[11px] font-medium px-2.5 py-0.5 rounded-xl bg-[#FAF5EE] text-[#5A534A] border border-[#EAE3D6]"
+                          >
+                            {tag}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-xl bg-[#FAF5EE] text-[#5A534A] border border-[#EAE3D6]">
+                          {service.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Expandable Specifications Checklist (Revealed when "View Details" is clicked) */}
+                    {isExpanded && (
+                      <div className="pt-3 pb-2 border-t border-[#F0EAE1] mb-3.5 space-y-2 animate-in fade-in duration-200">
+                        <div className="text-[10px] font-mono uppercase tracking-wider font-semibold text-[#8C8275] mb-1.5 flex items-center justify-between">
+                          <span>Engineering Specifications</span>
+                          <span className="text-[#8C6C46] font-semibold">{service.estimateScope || "Free In-Home Estimate"}</span>
+                        </div>
+                        <ul className="space-y-1.5">
+                          {service.features.map((feat, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-xs text-[#524B42] leading-relaxed">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6C46] shrink-0 mt-0.5" />
+                              <span>{feat}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
 
-                  <h4 className="text-xl font-display font-bold text-[#1C1917] mb-2.5 leading-snug group-hover:text-[#8C6C46] transition-colors">
-                    {service.title}
-                  </h4>
+                  {/* Laptop Action Row: View Details toggle + Book Service button */}
+                  <div className="pt-3 border-t border-[#F0EAE1] flex items-center justify-between gap-2">
+                    <button
+                      onClick={() => toggleExpand(service.id)}
+                      className="py-2 px-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all duration-200 cursor-pointer bg-[#FAF5EE] hover:bg-[#F2ECE1] text-[#1C1917] border border-[#E8DFCE] hover:border-[#8C6C46]"
+                    >
+                      <span>{isExpanded ? 'Hide Details' : 'View Details'}</span>
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        isExpanded ? 'rotate-180 text-amber-600' : 'text-[#8C6C46]'
+                      }`} />
+                    </button>
 
-                  <p className="text-xs text-[#6B6358] mb-5 leading-relaxed font-sans">
-                    {service.description}
-                  </p>
-
-                  {/* Full Specifications Checklist directly visible on Laptop */}
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs text-[#524B42] p-1 rounded-xl transition-colors">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6C46] shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-4 border-t border-[#F0EAE1] flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs text-[#8C6C46] font-semibold">
-                    <ShieldCheck className="w-4 h-4 text-[#8C6C46]" />
-                    <span>{service.estimateScope || "Free In-Home Estimate"}</span>
+                    <button
+                      onClick={() => {
+                        if (playAudioClick) playAudioClick();
+                        onSelectService(service.id);
+                      }}
+                      className="px-4 py-2 rounded-full bg-[#1C1917] text-white hover:bg-[#8C6C46] text-xs font-sans font-semibold tracking-wider flex items-center gap-1.5 transition-all shadow-md group-hover:scale-105 active:scale-95 cursor-pointer ml-auto"
+                    >
+                      <span>Book Service</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </button>
                   </div>
-
-                  <button
-                    onClick={() => {
-                      if (playAudioClick) playAudioClick();
-                      onSelectService(service.id);
-                    }}
-                    className="px-4.5 py-2.5 rounded-full bg-[#1C1917] text-white hover:bg-[#8C6C46] text-xs font-sans font-semibold tracking-wider flex items-center gap-2 transition-all shadow-md group-hover:scale-105 active:scale-95 cursor-pointer"
-                  >
-                    <span>Book Service</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                  </button>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Mobile View (phones only): Compact, native-app sized cards matching reference screenshot */}
           <div className="md:hidden flex flex-col gap-4">
             {filteredServices.map((service) => {
-              const isExpanded = expandedServiceId === service.id;
+              const isExpanded = expandedServiceIds.has(service.id);
 
               return (
                 <div
