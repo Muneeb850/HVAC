@@ -34,31 +34,30 @@ export default function Navbar({ onOpenBooking, soundEnabled, setSoundEnabled, p
             : 'bg-[#F7F4EE] py-3.5 border-b border-[#EAE3D6] lg:border-none lg:bg-transparent lg:py-0'
         }`}
       >
-        <div className={`max-w-7xl mx-auto px-6 lg:px-7 flex items-center justify-between transition-all duration-300 ${
-          'lg:pointer-events-auto lg:max-w-6xl lg:rounded-full lg:border lg:border-[#E8DFCE] lg:bg-[#F7F4EE]/92 lg:backdrop-blur-md lg:py-2.5 ' +
+        <div className={`max-w-7xl mx-auto px-6 lg:px-7 xl:px-8 flex items-center justify-between transition-all duration-300 ${
+          'lg:pointer-events-auto lg:max-w-6xl xl:max-w-7xl lg:rounded-full lg:border lg:border-[#E8DFCE] lg:bg-[#F7F4EE]/92 lg:backdrop-blur-md lg:py-2.5 ' +
           (scrolled ? 'lg:shadow-xl lg:bg-[#F7F4EE]/95 lg:border-[#8C6C46]/30' : 'lg:shadow-md')
         }`}>
           
-          {/* Brand Logo: Clean vertical pill "▮" + Brand Name */}
+          {/* Brand Logo: Clean vertical pill "▮" + Stacked Brand Lockup */}
           <Link 
             to="/" 
             onClick={playAudioClick}
-            className="flex items-center gap-2.5 group shrink-0"
+            className="flex items-center gap-2.5 group shrink-0 mr-4 lg:mr-6"
           >
-            <span className="w-2.5 h-6 rounded-full bg-[#1C1917] group-hover:scale-105 transition-transform" />
-            <div className="flex items-center gap-2">
-              <span className="font-sans font-bold text-xl sm:text-2xl tracking-[0.08em] text-[#1C1917] uppercase whitespace-nowrap">
+            <span className="w-2.5 h-6 rounded-full bg-[#1C1917] group-hover:scale-105 transition-transform shrink-0" />
+            <div className="flex flex-col justify-center">
+              <span className="font-sans font-bold text-lg sm:text-xl tracking-[0.08em] text-[#1C1917] uppercase whitespace-nowrap leading-none">
                 ONE NATION
               </span>
-              <span className="hidden xl:inline-block w-px h-4 bg-[#D5CDBC]" />
-              <span className="text-[10px] font-mono tracking-widest text-[#8C6C46] uppercase hidden xl:inline-block font-semibold whitespace-nowrap">
+              <span className="text-[9px] font-mono tracking-[0.18em] text-[#8C6C46] uppercase font-semibold whitespace-nowrap leading-tight pt-1">
                 HEATING &amp; AIR
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links - Clean & Fitted */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {/* Desktop Nav Links - Clean, Spacious & Never Colliding */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
