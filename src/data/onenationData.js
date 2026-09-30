@@ -225,7 +225,7 @@ export const SYMPTOMS_WIZARD = [
   {
     id: "gas-co-smell",
     symptom: "Rotten egg sulfur odor or carbon monoxide detector alarm sounding",
-    severity: "EXTREME HAZARD",
+    severity: "HAZARD",
     urgency: "Immediate Evacuate & Call 911",
     action: "Evacuate everyone immediately! Do NOT turn light switches on or off. Call 911 and Xcel Energy from outdoors, then our emergency line.",
     serviceMatch: "Emergency Gas Furnace & Combustion Safety",
