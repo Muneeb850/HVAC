@@ -47,7 +47,7 @@ export default function Hero({ onOpenBooking, playAudioClick }) {
             </div>
 
             {/* Massive Editorial Serif Headline matching theme typography */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-medium uppercase tracking-tight text-[#1C1917] leading-[1.02] sm:leading-[0.92]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-medium uppercase tracking-tight text-[#1C1917] leading-[1.02] sm:leading-[0.94]">
               ELEVATING <br />
               CLIMATE COMFORT
             </h1>

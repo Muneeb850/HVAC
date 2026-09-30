@@ -66,11 +66,11 @@ export default function ReviewsSection({ playAudioClick }) {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {filteredReviews.map((rev, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl p-7 border border-[#E8DFCE] shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#E8DFCE] shadow-sm flex flex-col justify-between hover:shadow-xl transition-all duration-300"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-4">

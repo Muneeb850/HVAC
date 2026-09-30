@@ -10,23 +10,23 @@ export default function FinancingGuarantee({ playAudioClick, showFaq = false }) 
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         
         {/* Financing Banner Card */}
-        <div className="rounded-3xl bg-[#1C1917] text-white p-6 sm:p-12 shadow-2xl relative overflow-hidden mb-20">
+        <div className="rounded-2xl sm:rounded-3xl bg-[#1C1917] text-white p-5 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden mb-16 sm:mb-20">
           <div className="absolute -top-10 -right-10 w-64 h-64 sm:w-96 sm:h-96 bg-[#8C6C46]/10 blur-3xl pointer-events-none rounded-full" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            <div className="lg:col-span-8 space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
+            <div className="lg:col-span-8 space-y-3.5 sm:space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#B8936D] text-xs font-mono border border-white/15">
                 <CreditCard className="w-3.5 h-3.5" />
                 <span>OFFICIAL WELLS FARGO RETAIL SERVICES PARTNER</span>
               </div>
-              <h3 className="text-3xl sm:text-5xl font-display font-medium uppercase tracking-tight text-white leading-[0.98]">
+              <h3 className="text-2xl sm:text-4xl lg:text-5xl font-display font-medium uppercase tracking-tight text-white leading-[0.98]">
                 High-Efficiency HVAC Upgrades <br />
                 <span className="text-[#B8936D] font-serif italic">With Flexible 0% APR Financing</span>
               </h3>
-              <p className="text-stone-300 text-sm sm:text-base max-w-xl leading-relaxed font-sans">
+              <p className="text-stone-300 text-xs sm:text-base max-w-xl leading-relaxed font-sans">
                 Don’t let a sudden furnace burnout or failed AC compressor disrupt your family budget. Access flexible monthly payment terms with rapid 60-second online approval.
               </p>
-              <div className="flex flex-wrap items-center gap-6 pt-2 text-xs font-mono text-stone-300">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-1 text-xs font-mono text-stone-300">
                 <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-400" /> No Prepayment Penalties</span>
                 <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-400" /> Fast Paperless Application</span>
                 <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-400" /> Promotional Terms up to 60 Months</span>
@@ -39,12 +39,12 @@ export default function FinancingGuarantee({ playAudioClick, showFaq = false }) 
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={playAudioClick}
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#FAF5EE] hover:bg-white text-[#1C1917] font-sans font-bold text-xs uppercase tracking-wider active:scale-95 transition shadow-xl flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-full bg-[#FAF5EE] hover:bg-white text-[#1C1917] font-sans font-bold text-xs uppercase tracking-wider active:scale-95 transition shadow-xl flex items-center justify-center gap-2"
               >
                 <span>Apply For 0% Financing</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
-              <span className="text-[10px] font-mono text-stone-400 mt-2">
+              <span className="text-[10px] font-mono text-stone-400 mt-2 text-center lg:text-right">
                 Secure 256-bit Wells Fargo Online Portal
               </span>
             </div>
@@ -52,12 +52,12 @@ export default function FinancingGuarantee({ playAudioClick, showFaq = false }) 
         </div>
 
         {/* Guarantees & Credentials 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-          <div className="p-8 rounded-3xl bg-white border border-[#E8DFCE] shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAF5EE] border border-[#E8DFCE] text-[#8C6C46] flex items-center justify-center mb-4">
-              <ShieldCheck className="w-6 h-6" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-16 sm:mb-20">
+          <div className="p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-[#E8DFCE] shadow-sm space-y-2.5">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#FAF5EE] border border-[#E8DFCE] text-[#8C6C46] flex items-center justify-center mb-3">
+              <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <h4 className="text-xl font-display font-bold text-[#1C1917]">
+            <h4 className="text-lg sm:text-xl font-display font-bold text-[#1C1917]">
               10-Year Master HVAC Warranty
             </h4>
             <p className="text-xs text-[#6B6358] leading-relaxed">

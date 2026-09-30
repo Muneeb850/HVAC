@@ -36,14 +36,14 @@ export default function ServiceAreaRadar({ onSelectCity, playAudioClick }) {
                     setActiveCity(city);
                     if (playAudioClick) playAudioClick();
                   }}
-                  className={`p-4 rounded-2xl text-left transition-all border flex items-center justify-between ${
+                  className={`p-3.5 sm:p-4 rounded-2xl text-left transition-all border flex items-center justify-between ${
                     isSelected
-                      ? 'bg-white/10 border-white shadow-xl scale-[1.01]'
+                      ? 'bg-white/10 border-2 border-white shadow-lg ring-2 ring-white/20'
                       : 'bg-black/30 border-white/10 hover:border-white/20'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-mono font-bold text-xs ${
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
                       isSelected ? 'bg-white text-[#1C1917]' : 'bg-white/10 text-white'
                     }`}>
                       <MapPin className="w-4 h-4" />
@@ -54,7 +54,7 @@ export default function ServiceAreaRadar({ onSelectCity, playAudioClick }) {
                     </div>
                   </div>
 
-                  <div className="text-right">
+                  <div className="text-right shrink-0">
                     <span className="text-xs font-mono font-bold text-amber-300 block">{city.avgEtaMinutes}m ETA</span>
                     <span className="text-[10px] font-mono text-emerald-400">{city.techAvailable} Vans Ready</span>
                   </div>
@@ -64,7 +64,7 @@ export default function ServiceAreaRadar({ onSelectCity, playAudioClick }) {
           </div>
 
           {/* Telemetry Card */}
-          <div className="lg:col-span-5 bg-black/40 border border-white/15 p-8 rounded-3xl shadow-2xl backdrop-blur-md">
+          <div className="lg:col-span-5 bg-black/40 border border-white/15 p-5 sm:p-7 rounded-2xl sm:rounded-3xl shadow-2xl backdrop-blur-md">
             <div className="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
               <div>
                 <span className="text-[10px] font-mono text-stone-400 uppercase tracking-widest block">Selected Front Range Zone</span>
