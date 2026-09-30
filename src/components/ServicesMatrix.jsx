@@ -179,47 +179,109 @@ export default function ServicesMatrix({ onSelectService, playAudioClick }) {
             </div>
           </div>
 
-          {/* Services Grid (6 Core Cards styled precisely to match reference screenshot in size and structure) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {/* Desktop View (md and up): Full, spacious, architectural laptop cards (White/Warm Alabaster, NOT black) */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+            {filteredServices.map((service) => (
+              <div
+                key={service.id}
+                className="bg-gradient-to-b from-white via-white to-[#FDFBF7] rounded-3xl p-7 border border-[#E8DFCE] hover:border-[#8C6C46]/70 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+              >
+                {/* Subtle Top Accent Glow on Hover */}
+                <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#8C6C46] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0 right-0" />
+
+                <div>
+                  {/* Top Badges */}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-gradient-to-r from-[#FAF5EE] to-[#F5ECE0] text-[#8C6C46] border border-[#E5DAC8] font-bold shadow-sm">
+                      {service.badge}
+                    </span>
+                    <span className="text-[11px] font-mono text-[#8C8275] flex items-center gap-1 font-medium bg-[#FAF5EE] px-2.5 py-0.5 rounded-full border border-[#EAE3D6]">
+                      <Clock className="w-3 h-3 text-[#8C6C46]" />
+                      {service.eta}
+                    </span>
+                  </div>
+
+                  {/* Picture Header on Laptop */}
+                  <div className="relative h-44 w-full rounded-2xl overflow-hidden mb-4 shrink-0 bg-[#EFE9DF]">
+                    <img 
+                      src={service.image} 
+                      alt={service.title} 
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <div className="absolute bottom-2.5 left-3 flex items-center gap-1.5 text-[11px] font-mono text-white font-medium drop-shadow-sm">
+                      <span>{service.categoryTag || service.badge}</span>
+                    </div>
+                  </div>
+
+                  <h4 className="text-xl font-display font-bold text-[#1C1917] mb-2.5 leading-snug group-hover:text-[#8C6C46] transition-colors">
+                    {service.title}
+                  </h4>
+
+                  <p className="text-xs text-[#6B6358] mb-5 leading-relaxed font-sans">
+                    {service.description}
+                  </p>
+
+                  {/* Full Specifications Checklist directly visible on Laptop */}
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feat, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xs text-[#524B42] p-1 rounded-xl transition-colors">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6C46] shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-4 border-t border-[#F0EAE1] flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-xs text-[#8C6C46] font-semibold">
+                    <ShieldCheck className="w-4 h-4 text-[#8C6C46]" />
+                    <span>{service.estimateScope || "Free In-Home Estimate"}</span>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      if (playAudioClick) playAudioClick();
+                      onSelectService(service.id);
+                    }}
+                    className="px-4.5 py-2.5 rounded-full bg-[#1C1917] text-white hover:bg-[#8C6C46] text-xs font-sans font-semibold tracking-wider flex items-center gap-2 transition-all shadow-md group-hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    <span>Book Service</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile View (phones only): Compact, native-app sized cards matching reference screenshot */}
+          <div className="md:hidden flex flex-col gap-4">
             {filteredServices.map((service) => {
-              const isDark = service.popular; // First card has dark luxury background like Voice AI in screenshot
               const isExpanded = expandedServiceId === service.id;
 
               return (
                 <div
                   key={service.id}
-                  className={`rounded-[26px] p-5 sm:p-6 border transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ${
-                    isDark
-                      ? 'bg-gradient-to-b from-[#1C1917] via-[#221E1B] to-[#1C1917] text-white border-stone-800 shadow-xl hover:shadow-2xl hover:-translate-y-1'
-                      : 'bg-white text-[#1C1917] border-[#E8DFCE] shadow-sm hover:shadow-xl hover:border-[#8C6C46]/60 hover:-translate-y-1'
-                  }`}
+                  className="rounded-[24px] p-5 border border-[#E8DFCE] bg-white text-[#1C1917] shadow-sm flex flex-col justify-between relative overflow-hidden"
                 >
                   <div>
-                    {/* Top Row: Pill Badge on Left + Dark Squircle Icon on Right */}
+                    {/* Top Row: Category Pill on Left + Dark Squircle Icon on Right */}
                     <div className="flex items-center justify-between gap-2 mb-3.5">
-                      <span className={`text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full font-bold shadow-sm ${
-                        isDark
-                          ? 'bg-stone-800 text-amber-300 border border-stone-700'
-                          : 'bg-[#FAF5EE] text-[#8C6C46] border border-[#E5DAC8]'
-                      }`}>
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full font-bold shadow-sm bg-[#FAF5EE] text-[#8C6C46] border border-[#E5DAC8]">
                         {service.categoryTag || service.badge}
                       </span>
 
-                      <div className={`w-9 h-9 rounded-2xl flex items-center justify-center shrink-0 shadow-md ${
-                        isDark
-                          ? 'bg-stone-800 border border-stone-700 text-amber-400'
-                          : 'bg-[#1C1917] text-amber-400 border border-stone-800'
-                      }`}>
+                      <div className="w-9 h-9 rounded-2xl bg-[#1C1917] text-amber-400 border border-stone-800 flex items-center justify-center shrink-0 shadow-md">
                         {getServiceIcon(service.id)}
                       </div>
                     </div>
 
                     {/* Picture Banner with Scrim & ETA Tag */}
-                    <div className="relative h-36 sm:h-40 w-full rounded-2xl overflow-hidden mb-3.5 shrink-0 bg-[#EFE9DF]">
+                    <div className="relative h-36 w-full rounded-2xl overflow-hidden mb-3.5 shrink-0 bg-[#EFE9DF]">
                       <img 
                         src={service.image} 
                         alt={service.title} 
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
+                        className="w-full h-full object-cover object-center" 
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/15" />
                       
@@ -234,16 +296,12 @@ export default function ServicesMatrix({ onSelectService, playAudioClick }) {
                     </div>
 
                     {/* Title */}
-                    <h4 className={`text-lg sm:text-xl font-bold font-sans mb-1.5 leading-snug transition-colors ${
-                      isDark ? 'text-white' : 'text-[#1C1917] group-hover:text-[#8C6C46]'
-                    }`}>
+                    <h4 className="text-lg font-bold font-sans mb-1.5 leading-snug text-[#1C1917]">
                       {service.shortTitle || service.title}
                     </h4>
 
                     {/* Description */}
-                    <p className={`text-xs mb-3.5 leading-relaxed font-sans line-clamp-2 ${
-                      isDark ? 'text-stone-300' : 'text-[#6B6358]'
-                    }`}>
+                    <p className="text-xs mb-3.5 leading-relaxed font-sans line-clamp-2 text-[#6B6358]">
                       {service.description}
                     </p>
 
@@ -253,19 +311,13 @@ export default function ServicesMatrix({ onSelectService, playAudioClick }) {
                         service.tags.map((tag, tIdx) => (
                           <span 
                             key={tIdx} 
-                            className={`text-[11px] font-medium px-2.5 py-1 rounded-xl transition-colors ${
-                              isDark 
-                                ? 'bg-stone-800/80 text-stone-200 border border-stone-700' 
-                                : 'bg-[#FAF5EE] text-[#5A534A] border border-[#EAE3D6]'
-                            }`}
+                            className="text-[11px] font-medium px-2.5 py-1 rounded-xl bg-[#FAF5EE] text-[#5A534A] border border-[#EAE3D6]"
                           >
                             {tag}
                           </span>
                         ))
                       ) : (
-                        <span className={`text-[11px] font-medium px-2.5 py-1 rounded-xl ${
-                          isDark ? 'bg-stone-800/80 text-stone-200 border border-stone-700' : 'bg-[#FAF5EE] text-[#5A534A] border border-[#EAE3D6]'
-                        }`}>
+                        <span className="text-[11px] font-medium px-2.5 py-1 rounded-xl bg-[#FAF5EE] text-[#5A534A] border border-[#EAE3D6]">
                           {service.badge}
                         </span>
                       )}
@@ -273,21 +325,19 @@ export default function ServicesMatrix({ onSelectService, playAudioClick }) {
 
                     {/* Expandable Feature List (Revealed when "View Details" is clicked) */}
                     {isExpanded && (
-                      <div className={`pt-3 pb-2 border-t mb-4 space-y-2 animate-in fade-in duration-200 ${
-                        isDark ? 'border-stone-800' : 'border-[#F0EAE1]'
-                      }`}>
-                        <div className="text-[10px] font-mono uppercase tracking-wider font-semibold opacity-75 mb-1.5">
+                      <div className="pt-3 pb-2 border-t border-[#F0EAE1] mb-4 space-y-2 animate-in fade-in duration-200">
+                        <div className="text-[10px] font-mono uppercase tracking-wider font-semibold opacity-75 mb-1.5 text-[#787168]">
                           Engineering Specifications:
                         </div>
                         {service.features.map((feat, idx) => (
                           <div key={idx} className="flex items-start gap-2 text-xs leading-relaxed">
                             <CheckCircle2 className="w-3.5 h-3.5 text-[#8C6C46] shrink-0 mt-0.5" />
-                            <span className={isDark ? 'text-stone-200' : 'text-[#4A433A]'}>{feat}</span>
+                            <span className="text-[#4A433A]">{feat}</span>
                           </div>
                         ))}
 
                         <div className="pt-2 flex items-center justify-between text-xs font-semibold">
-                          <span className={isDark ? 'text-amber-300' : 'text-[#8C6C46]'}>
+                          <span className="text-[#8C6C46]">
                             {service.estimateScope || "Free In-Home Estimate"}
                           </span>
                           <button
@@ -295,11 +345,7 @@ export default function ServicesMatrix({ onSelectService, playAudioClick }) {
                               if (playAudioClick) playAudioClick();
                               onSelectService(service.id);
                             }}
-                            className={`px-4 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wider flex items-center gap-1.5 transition-all shadow-md active:scale-95 ${
-                              isDark
-                                ? 'bg-amber-400 text-[#1C1917] hover:bg-amber-300'
-                                : 'bg-[#1C1917] text-white hover:bg-[#8C6C46]'
-                            }`}
+                            className="px-4 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wider flex items-center gap-1.5 transition-all shadow-md active:scale-95 bg-[#1C1917] text-white hover:bg-[#8C6C46]"
                           >
                             <span>Book Now</span>
                             <ArrowRight className="w-3 h-3" />
@@ -313,15 +359,11 @@ export default function ServicesMatrix({ onSelectService, playAudioClick }) {
                   <div className="pt-2">
                     <button
                       onClick={() => toggleExpand(service.id)}
-                      className={`w-full py-2.5 px-4 rounded-xl sm:rounded-2xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer shadow-sm active:scale-98 ${
-                        isDark
-                          ? 'bg-stone-800 hover:bg-stone-700 text-white border border-stone-700'
-                          : 'bg-[#FAF5EE] hover:bg-[#F2ECE1] text-[#1C1917] border border-[#E8DFCE]'
-                      }`}
+                      className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer shadow-sm active:scale-98 bg-[#FAF5EE] hover:bg-[#F2ECE1] text-[#1C1917] border border-[#E8DFCE]"
                     >
                       <span>{isExpanded ? 'Hide Details' : 'View Details'}</span>
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        isExpanded ? 'rotate-180 text-amber-400' : 'text-[#8C6C46]'
+                        isExpanded ? 'rotate-180 text-amber-500' : 'text-[#8C6C46]'
                       }`} />
                     </button>
                   </div>
