@@ -66,7 +66,7 @@ export default function ReviewsSection({ playAudioClick }) {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {filteredReviews.map((rev, index) => (
             <div
               key={index}
