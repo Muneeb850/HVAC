@@ -26,9 +26,9 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        serif: ['"Cormorant Garamond"', '"DM Serif Display"', 'serif'],
-        display: ['"DM Serif Display"', '"Cormorant Garamond"', 'serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'serif'],
+        display: ['"Playfair Display"', 'serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
     },
